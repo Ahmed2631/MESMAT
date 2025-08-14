@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سايبر تك - حلول التقنية والتسويق الرقمي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary);
+        }
+        
+        .bg-primary-dark {
+            background-color: var(--primary-dark);
+        }
+        
+        .text-secondary {
+            color: var(--secondary);
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .client-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        .testimonial-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width .3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h1 class="text-xl font-bold text-gray-800 mr-3">سايبر<span class="text-primary">تك</span></h1>
+            </div>
+            
+            <nav class="hidden lg:block">
+                <ul class="flex space-x-8 space-x-reverse">
+                    <li><a href="#home" class="nav-link text-primary font-medium">الرئيسية</a></li>
+                    <li><a href="#services" class="nav-link text-gray-700 hover:text-primary transition">خدماتنا</a></li>
+                    <li><a href="#about" class="nav-link text-gray-700 hover:text-primary transition">من نحن</a></li>
+                    <li><a href="#portfolio" class="nav-link text-gray-700 hover:text-primary transition">أعمالنا</a></li>
+                    <li><a href="#testimonials" class="nav-link text-gray-700 hover:text-primary transition">اراء العملاء</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-700 hover:text-primary transition">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="flex items-center space-x-4 space-x-reverse" >
+                <a href="https://www.linkedin.com/in/ahmed-hassan-developer/">
+                    <button class="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary-dark transition hidden md:inline-block">
+                        طلب استشارة
+                    </button>
+                    <button id="mobile-menu-button" class="lg:hidden text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu hidden lg:hidden bg-white shadow-lg absolute w-full left-0 px-4 z-50">
+            <div class="container mx-auto py-4">
+                <ul class="space-y-4">
+                    <li><a href="#home" class="block text-primary font-medium py-2">الرئيسية</a></li>
+                    <li><a href="#services" class="block text-gray-700 hover:text-primary transition py-2">خدماتنا</a></li>
+                    <li><a href="#about" class="block text-gray-700 hover:text-primary transition py-2">من نحن</a></li>
+                    <li><a href="#portfolio" class="block text-gray-700 hover:text-primary transition py-2">أعمالنا</a></li>
+                    <li><a href="#testimonials" class="block text-gray-700 hover:text-primary transition py-2">اراء العملاء</a></li>
+                    <li><a href="#contact" class="block text-gray-700 hover:text-primary transition py-2">اتصل بنا</a></li>
+                </ul>
+                <button class="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary-dark transition w-full mt-4">
+                    طلب استشارة
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white">
+        <div class="container mx-auto px-4 py-32 flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 mb-16 lg:mb-0">
+                <div class="bg-white bg-opacity-20 rounded-full px-4 py-1 inline-flex items-center mb-6">
+                    <span class="text-sm">الريادة في الحلول التقنية</span>
+                    <i class="fas fa-arrow-left ml-2"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">حلول <span class="text-secondary">تقنية</span> مبتكرة لتحقيق النمو <span class="text-secondary">الرقمي</span></h1>
+                <p class="text-lg md:text-xl mb-8 leading-relaxed opacity-90">نقدم مجموعة متكاملة من خدمات التقنية والتسويق الرقمي المصممة خصيصاً لمساعدة الشركات في العالم العربي على النمو والازدهار في العصر الرقمي.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-white text-primary px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition flex items-center">
+                        ابدأ مشروعك الآن
+                        <i class="fas fa-arrow-left mr-2"></i>
+                    </button>
+                    <button class="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-primary transition flex items-center">
+                        <i class="fas fa-play-circle mr-2"></i>
+                        شاهد الفيديو التعريفي
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-6 space-x-reverse mt-12">
+                    <div class="flex items-center">
+                        <div class="flex -space-x-2 overflow-hidden">
+                            <img src="https://placehold.co/40x40" alt="صورة شخصية لمدير مكتب" class="inline-block h-10 w-10 rounded-full ring-2 ring-white">
+                            <img src="https://placehold.co/40x40" alt="صورة شخصية لمصمم جرافيك" class="inline-block h-10 w-10 rounded-full ring-2 ring-white">
+                            <img src="https://placehold.co/40x40" alt="صورة شخصية لمطور ويب" class="inline-block h-10 w-10 rounded-full ring-2 ring-white">
+                        </div>
+                        <span class="mr-3 text-sm">+20 خبيراً</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="mr-3 bg-white bg-opacity-20 rounded-full p-2">
+                            <i class="fas fa-star text-yellow-300"></i>
+                        </div>
+                        <span class="text-sm">5.0 (تقيم 120 عميل)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative">
+                <div class="stats-card absolute -top-8 -right-8 rounded-xl p-6 shadow-lg z-10 w-64">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-green-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-check text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">المشاريع المكتملة</p>
+                            <h3 class="text-2xl font-bold">320+</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-card absolute -bottom-8 -left-8 rounded-xl p-6 shadow-lg z-10 w-64">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-users text-primary"></i>
+                        </div>
+                        <div class="text-primary">
+                            <p class="text-dark-500 text-sm">عملاء راضون</p>
+                            <h3 class="text-2xl font-bold">150+</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <img src="https://placehold.co/600x500" alt="فريق عمل عربي متعدد الجنسيات يجتمع في مساحة مكتبية عصرية يناقشون استراتيجيات التسويق الرقمي" class="rounded-xl shadow-2xl relative z-0" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-12 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <p class="text-center text-gray-500 mb-8">شركاء النجاح</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <img src="https://placehold.co/120x50" alt="شعار شركة الزاهد" class="client-logo h-8 md:h-10 opacity-70">
+                <img src="https://placehold.co/120x50" alt="شعار مجموعة سامبا المالية" class="client-logo h-8 md:h-10 opacity-70">
+                <img src="https://placehold.co/120x50" alt="شعار مجموعة الاتصالات السعودية" class="client-logo h-8 md:h-10 opacity-70">
+                <img src="https://placehold.co/120x50" alt="شعار شركة المراعي" class="client-logo h-8 md:h-10 opacity-70">
+                <img src="https://placehold.co/120x50" alt="شعار مجموعة عبد اللطيف جميل" class="client-logo h-8 md:h-10 opacity-70">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <span class="inline-block bg-blue-100 text-primary px-4 py-1 rounded-full mb-4">خدماتنا</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">حلولنا المتكاملة لعملك</h2>
+                <p class="text-gray-600">نقدم مجموعة واسعة من الخدمات التقنية والتسويقية المصممة خصيصًا لاحتياجات العملاء في العالم العربي لتسريع نمو أعمالهم</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card group bg-white rounded-xl shadow-md p-8 transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white text-primary">
+                        <i class="fas fa-laptop-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary">تطوير المواقع والتطبيقات</h3>
+                    <p class="text-gray-600 mb-4">نصمم ونطور مواقع وتطبيقات مخصصة تلبي احتياجات عملك مع واجهات مستخدم مذهلة وتجربة مستخدم استثنائية.</p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium group-hover:text-primary-dark">
+                        المزيد من التفاصيل
+                        <i class="fas fa-arrow-left mr-2 transition-transform group-hover:-translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card group bg-white rounded-xl shadow-md p-8 transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white text-primary">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary">التحليل الرقمي والبيانات</h3>
+                    <p class="text-gray-600 mb-4">نقدم حلولاً متكاملة لتحليل البيانات واستخراج الرؤى لمساعدتك في اتخاذ قرارات تجارية مستنيرة تعزز أداء عملك.</p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium group-hover:text-primary-dark">
+                        المزيد من التفاصيل
+                        <i class="fas fa-arrow-left mr-2 transition-transform group-hover:-translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card group bg-white rounded-xl shadow-md p-8 transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white text-primary">
+                        <i class="fas fa-server text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary">استضافة وحماية المواقع</h3>
+                    <p class="text-gray-600 mb-4">حلول استضافة آمنة وسريعة مع دعم فني على مدار الساعة لضمان تواجد دائم لموقعك مع حماية متكاملة من الاختراقات.</p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium group-hover:text-primary-dark">
+                        المزيد من التفاصيل
+                        <i class="fas fa-arrow-left mr-2 transition-transform group-hover:-translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card group bg-white rounded-xl shadow-md p-8 transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white text-primary">
+                        <i class="fas fa-bullhorn text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary">التسويق الرقمي</h3>
+                    <p class="text-gray-600 mb-4">حملات تسويقية فعالة عبر منصات التواصل الاجتماعي ومحركات البحث لزيادة وصول علامتك التجارية وجذب العملاء.</p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium group-hover:text-primary-dark">
+                        المزيد من التفاصيل
+                        <i class="fas fa-arrow-left mr-2 transition-transform group-hover:-translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card group bg-white rounded-xl shadow-md p-8 transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white text-primary">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary">الأمن السيبراني</h3>
+                    <p class="text-gray-600 mb-4">حلول أمنية متكاملة لحماية بياناتك وعملائك من التهديدات الإلكترونية مع مراقبة مستمرة وأنظمة حماية متقدمة.</p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium group-hover:text-primary-dark">
+                        المزيد من التفاصيل
+                        <i class="fas fa-arrow-left mr-2 transition-transform group-hover:-translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card group bg-white rounded-xl shadow-md p-8 transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white text-primary">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary">تطبيقات الجوال</h3>
+                    <p class="text-gray-600 mb-4">تصميم وتطوير تطبيقات جوال مخصصة لأنظمة iOS و Android بخصائص متقدمة لتجربة مستخدم رائعة عالية الأداء.</p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium group-hover:text-primary-dark">
+                        المزيد من التفاصيل
+                        <i class="fas fa-arrow-left mr-2 transition-transform group-hover:-translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <img src="https://placehold.co/600x500" alt="فريق من المحترفين العرب في اجتماع عمل ببيئة مكتبية حديثة" class="rounded-xl shadow-xl" />
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <span class="inline-block bg-blue-100 text-primary px-4 py-1 rounded-full mb-4">لماذا نحن</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">شركاؤك المفضلون في رحلة التحول الرقمي</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">نساعد الشركات على تحقيق أهدافها عبر حلول تقنية وتسويقية مبتكرة تم تصميمها خصيصاً للأسواق العربية مع مراعاة الثقافة المحلية واللغات.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-lg p-3 mr-4 text-primary">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">خبراء محليون</h3>
+                                <p class="text-gray-600">فريق من الخبراء العرب المتخصصين في التقنية والتسويق الرقمي مع فهم عميق لاحتياجات السوق.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-lg p-3 mr-4 text-primary">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">حلول مخصصة</h3>
+                                <p class="text-gray-600">نقدم حلولاً مصممة خصيصًا لتناسب احتياجات أعمالك وأهدافك بدلاً من الحلول الجاهزة.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-lg p-3 mr-4 text-primary">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">دعم متواصل</h3>
+                                <p class="text-gray-600">ندعم عملائنا على مدار الساعة مع فريق دعم فني محترف لحل أي مشكلة قد تواجهك.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition flex items-center mt-8">
+                        تعرف أكثر عن منهجيتنا
+                        <i class="fas fa-arrow-left mr-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <span class="inline-block bg-blue-100 text-primary px-4 py-1 rounded-full mb-4">أعمالنا</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">بعض مشاريعنا البارزة</h2>
+                <p class="text-gray-600">استكشف مجموعة من أحدث مشاريعنا التي أنجزناها لشركات رائدة في مختلف القطاعات</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-colsبعض المشاريع
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400" alt="موقع إلكتروني عصري لبنك إسلامي مع واجهة زرقاء وبيضاء" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">البنك الأهلي الإسلامي</h3>
+                        <p class="text-gray-200 mb-4">تصميم وتطوير نظام إلكتروني متكامل للخدمات المصرفية</p>
+                        <div class="flex items-center">
+                            <span class="bg-primary bg-opacity-80 text-white px-3 py-1 rounded-full text-sm">الخدمات المصرفية</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400" alt="تطبيق جوال لتوصيل الطعام مع واجهة برتقالية وصور شهية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">طلبات طعام</h3>
+                        <p class="text-gray-200 mb-4">تطبيق جوال لتوصيل الطعام مع نظام متكامل للمطاعم</p>
+                        <div class="flex items-center">
+                            <span class="bg-primary bg-opacity-80 text-white px-3 py-1 rounded-full text-sm">تطبيقات الجوال</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400" alt="لوحة تحليل بيانات الشركات مع رسوم بيانية ملونة" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">مركز البيانات الوطني</h3>
+                        <p class="text-gray-200 mb-4">نظام تحليل بيانات متقدم مع لوحات تحكم تفاعلية</p>
+                        <div class="flex items-center">
+                            <span class="bg-primary bg-opacity-80 text-white px-3 py-1 rounded-full text-sm">تحليل البيانات</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="inline-flex items-center px-6 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition">
+                    عرض جميع المشاريع
+                    <i class="fas fa-arrow-left mr-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <span class="inline-block bg-blue-100 text-primary px-4 py-1 rounded-full mb-4">اراء العملاء</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">ماذا يقول عملاؤنا عنا</h2>
+                <p class="text-gray-600">انضم أكثر من 150 عميلاً راضياً إلى قائمة عملائنا الذين حققوا نتائج استثنائية مع حلولنا</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-xl p-8 hover:shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/80x80" alt="صورة شخصية لرجل أعمال سعودي يرتدي بدلة رسمية" class="w-16 h-16 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-bold text-gray-800">أحمد الخالد</h4>
+                            <p class="text-gray-600">مدير عام - شركة التقنية المتقدمة</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">"لقد ساعدنا فريق سايبر تك في تحويل رؤيتنا إلى واقع ملموس من خلال موقع إلكتروني مميز وتطبيق جوال ساهم في زيادة مبيعاتنا بنسبة 40%. نعتمد عليهم في جميع احتياجاتنا التقنية."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-xl p-8 hover:shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/80x80" alt="صورة شخصية لسيدة أعمال إماراتية ترتدي حجاب" class="w-16 h-16 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-bold text-gray-800">نورة الظاهري</h4>
+                            <p class="text-gray-600">مالكة - متجر أزياء أونلاين</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">"الشغف والاحترافية التي يتحلى بها فريق سايبر تك مذهلة. قاموا بتصميم متجر إلكتروني جميل وسهل الاستخدام مع نظام دفع محلي مناسب لسوقنا، وقد تضاعفت مبيعاتنا خلال 3 أشهر فقط."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-xl p-8 hover:shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/80x80" alt="صورة شخصية لرجل أعمال مصري يرتدي قميص رسمي" class="w-16 h-16 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-bold text-gray-800">محمد حلمي</h4>
+                            <p class="text-gray-600">مدير تقنية المعلومات - مجموعة شركات</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">"تعاملنا مع العديد من الشركات التقنية، لكن سايبر تك كانوا الأفضل من حيث الفهم العميق لاحتياجات الأعمال في عالمنا العربي. نظام ERP الذي طوروه لنا غير طريقة عملنا بالكامل للأفضل."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">جاهزون لتحويل فكرتك إلى واقع رقمي؟</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">تواصل معنا اليوم ونحن سنقوم بتحويل رؤيتك إلى حلول تقنية مبتكرة تعزز نمو أعمالك</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-white text-primary px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition flex items-center">
+                    احجز استشارة مجانية
+                    <i class="fas fa-calendar-check mr-2"></i>
+                </button>
+                <button class="border border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-primary transition flex items-center">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    تواصل مع فريق المبيعات
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">تواصل معنا</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">نحن هنا لمساعدتك في أي استفسار أو مشروع تريد أن نناقشه معك. يمكنك التواصل معنا عبر المعلومات أدناه أو ملء نموذج الاتصال.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-lg p-3 mr-4 text-primary">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">العنوان</h3>
+                                <p class="text-gray-600">الرياض، المملكة العربية السعودية<br>حي المروج، شارع الملك فهد</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-lg p-3 mr-4 text-primary">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">البريد الإلكتروني</h3>
+                                <p class="text-gray-600">ah2540443@gmail.com<br>sales@cybertech.sa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-lg p-3 mr-4 text-primary">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">هاتف</h3>
+                                <p class="text-gray-600">+2010 633 82675 <br>+966 50 123 4567</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">تابعنا على</h3>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">أرسل لنا رسالة</h3>
+                        <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">الاسم الكامل</label>
+                                    <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="اسمك">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">البريد الإلكتروني</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="بريدك الإلكتروني">
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">رقم الهاتف</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="رقم هاتفك">
+                            </div>
+                            <div class="mt-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">الموضوع</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="موضوع الرسالة">
+                            </div>
+                            <div class="mt-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">الرسالة</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="رسالتك"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-primary-dark transition mt-6 flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                إرسال الرسالة
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h1 class="text-xl font-bold text-white mr-3">سايبر<span class="text-primary">تك</span></h1>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">شركة رائدة في تقديم حلول التقنية والتسويق الرقمي المبتكرة للشركات في العالم العربي.</p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6">روابط سريعة</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition">الرئيسية</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary transition">خدماتنا</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary transition">من نحن</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-primary transition">أعمالنا</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6">خدماتنا</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">تطوير المواقع والتطبيقات</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">التسويق الرقمي</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">تحليل البيانات</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">الأمن السيبراني</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">استضافة المواقع</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6">اتصل بنا</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">الرياض، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">info@cybertech.sa</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">+20 10 633 82675</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 سايبر تك. جميع الحقوق محفوظة.</p>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-gray-400 hover:text-primary transition">سياسة الخصوصية</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">شروط الخدمة</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">الإبلاغ عن مشكلة</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
