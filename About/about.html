@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | MESMAT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#f8f9fa',
+                        accent: '#2d74da'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+        .team-member:hover img {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .stats-number {
+            background: linear-gradient(135deg, #1a365d 0%, #2d74da 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-sans bg-secondary text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-primary text-white fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold">
+                    <span class="bg-white text-primary px-3 py-1 rounded-lg">MESMAT</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="hover:text-gray-300 transition-colors">Home</a>
+                    <a href="#" class="text-white font-medium border-b-2 border-white">About</a>
+                    <a href="#" class="hover:text-gray-300 transition-colors">Services</a>
+                    <a href="#" class="hover:text-gray-300 transition-colors">Contact</a>
+                </div>
+                <button class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+                    About MESMAT
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-primary to-[#2c5282] text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    MESMAT Established  <br>Since 2015
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
+                    We're a team of passionate creators, innovators, and problem-solvers dedicated to delivering exceptional digital experiences that drive real business results.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <button class="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        Explore Our Work
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition-colors">
+                        Meet Our Team
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="stats-number text-4xl md:text-5xl font-bold mb-2">250+</div>
+                    <div class="text-gray-600">Projects Completed</div>
+                </div>
+                <div class="p-6">
+                    <div class="stats-number text-4xl md:text-5xl font-bold mb-2">98%</div>
+                    <div class="text-gray-600">Client Satisfaction</div>
+                </div>
+                <div class="p-6">
+                    <div class="stats-number text-4xl md:text-5xl font-bold mb-2">8+</div>
+                    <div class="text-gray-600">Years Experience</div>
+                </div>
+                <div class="p-6">
+                    <div class="stats-number text-4xl md:text-5xl font-bold mb-2">50+</div>
+                    <div class="text-gray-600">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Our Story</h2>
+                <p class="text-xl text-gray-700 leading-relaxed">
+                    Founded in 2015, we started as a small team with big dreams. Today, we've grown into a leading digital agency trusted by clients worldwide, but our commitment to excellence remains unchanged.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cc8a2d73-b7e0-40bb-9f4d-109e02b6dd5f.png" alt="Modern office space with collaborative workstations and natural lighting" class="rounded-2xl shadow-xl" />
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-primary mb-6">From Vision to Reality</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        Our journey began when our founder, Sarah Johnson, recognized the gap between businesses and effective digital solutions. What started as a passion project has evolved into a full-service agency that bridges this gap with innovation and expertise.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        We believe that great digital experiences shouldn't be reserved for large corporations. Our mission is to bring enterprise-level quality and innovation to businesses of all sizes, helping them thrive in the digital age.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Our Core Values</h2>
+                <p class="text-xl text-gray-700">These principles guide everything we do and define who we are as a company.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-secondary p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Innovation</h3>
+                    <p class="text-gray-700">We constantly push boundaries and explore new technologies to deliver cutting-edge solutions that keep our clients ahead of the curve.</p>
+                </div>
+                
+                <div class="bg-secondary p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Collaboration</h3>
+                    <p class="text-gray-700">We believe great things happen when talented people work together. Our collaborative approach ensures the best outcomes for our clients.</p>
+                </div>
+                
+                <div class="bg-secondary p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Excellence</h3>
+                    <p class="text-gray-700">We're committed to delivering the highest quality in everything we do, from initial concept to final delivery and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Meet Our Leadership</h2>
+                <p class="text-xl text-gray-200">Talented professionals dedicated to your success.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="team-member bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center transition-transform duration-300">
+                    <img src="img/AdminPhoto.jpg" alt="Professional headshot of Sarah Johnson, CEO with warm smile and business attire" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white/20 transition-transform duration-300" />
+                    <h3 class="text-xl font-bold mb-2">Ahmed Hassan</h3>
+                    <p class="text-gray-300 mb-4">CEO & Founder</p>
+                    <p class="text-gray-200 text-sm">Visionary leader with 15+ years in digital transformation and business strategy.</p>
+                </div>
+                
+                <div class="team-member bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center transition-transform duration-300">
+                    <img src="img/AdminPhoto.jpg" alt="Professional headshot of Michael Chen, CTO with glasses and confident expression" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white/20 transition-transform duration-300" />
+                    <h3 class="text-xl font-bold mb-2">Ahmed Hassan</h3>
+                    <p class="text-gray-300 mb-4">Chief Technology Officer</p>
+                    <p class="text-gray-200 text-sm">Tech expert specializing in scalable architecture and emerging technologies.</p>
+                </div>
+                
+                <div class="team-member bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center transition-transform duration-300">
+                    <img src="img/AdminPhoto.jpg" alt="Professional headshot of Michael Chen, CTO with glasses and confident expression" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white/20 transition-transform duration-300" />
+                    <h3 class="text-xl font-bold mb-2">Ahmed Hassan</h3>
+                    <p class="text-gray-300 mb-4">Chief Technology Officer</p>
+                    <p class="text-gray-200 text-sm">Tech expert specializing in scalable architecture and emerging technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">MESMAT</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Transforming ideas into exceptional digital experiences since 2015.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">MESMAT Hospitality</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">MESMAT Logistic</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">MESMAT Mobility</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">MESMAT Auto Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <p class="text-gray-400 mb-2">123 Business Avenue</p>
+                    <p class="text-gray-400 mb-2">Saudi Arabia,Riyadh</p>
+                    <p class="text-gray-400 mb-2">info@Mesmat.com</p>
+                    <p class="text-gray-400">+1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2015 Company Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
