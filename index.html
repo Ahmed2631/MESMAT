@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESMAT - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap">
+
+    <style>
+        :root {
+            --light-gray: #E2E0E0;
+            --medium-gray: #B9B9B9;
+            --dark-gray: #4C4B4F;
+            --dark-bg: #34343B;
+            --white: #ffffff;
+            --black: #000000;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--dark-bg);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        body[dir="rtl"] {
+            font-family: 'Montserrat', sans-serif, 'Traditional Arabic';
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Updated Header Styles */
+        header {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            min-height: 80px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1001;
+        }
+        
+        .logo-img {
+            height: 50px;
+            transition: var(--transition);
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-left: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-text span {
+            color: var(--medium-gray);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 30px 0;
+            display: inline-block;
+            font-size: 16px;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--medium-gray);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--medium-gray);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--medium-gray);
+        }
+        
+        nav a.active:after {
+            width: 100%;
+        }
+        
+        /* Language Selector Styles */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+        }
+        
+        .language-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--medium-gray);
+        }
+        
+        .language-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .language-selector.active .language-btn i {
+            transform: rotate(180deg);
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            min-width: 120px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .language-selector.active .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: block;
+            padding: 10px 15px;
+            color: var(--dark-bg);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(185, 185, 185, 0.2);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: rgba(226, 224, 224, 0.1);
+            color: var(--dark-bg);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .mobile-nav-toggle .hamburger {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-nav-toggle .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--white);
+            margin: 2px 0;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+        
+        .mobile-nav-toggle.active .hamburger span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        
+        .mobile-nav-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-nav-toggle.active .hamburger span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(52, 52, 59, 0.8), rgba(52, 52, 59, 0.8)), url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--light-gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--medium-gray);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--medium-gray);
+        }
+        
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Premium Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: rgba(226, 224, 224, 0.2);
+        }
+        
+        .services-premium-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .premium-service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .premium-service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .premium-service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--medium-gray);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+            z-index: 2;
+        }
+        
+        .premium-service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .premium-service-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .premium-service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .premium-service-card:hover .premium-service-image img {
+            transform: scale(1.05);
+        }
+        
+        .premium-service-image::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .premium-service-card:hover .premium-service-image::after {
+            opacity: 1;
+        }
+        
+        .premium-service-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .premium-service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+            position: relative;
+            padding-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .premium-service-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--medium-gray);
+            transition: var(--transition);
+        }
+        
+        .premium-service-card:hover .premium-service-title::after {
+            width: 80px;
+        }
+        
+        .premium-service-description {
+            color: var(--dark-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .premium-service-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--dark-bg);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+        
+        .premium-service-link:hover {
+            color: var(--medium-gray);
+        }
+        
+        .premium-service-link i {
+            margin-right: 8px;
+            transition: var(--transition);
+        }
+        
+        .premium-service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .premium-service-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--dark-bg);
+            color: var(--white);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .premium-rating {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .premium-rating i {
+            color: var(--medium-gray);
+            margin-right: 2px;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+            background: linear-gradient(rgba(52, 52, 59, 0.9), rgba(52, 52, 59, 0.9)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--medium-gray);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-item p {
+            font-size: 1.2rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Commitment Section */
+        .commitment {
+            padding: 100px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .commitment-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .commitment-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+        
+        /* Enhanced Clients Section */
+        .clients-showcase {
+            padding: 100px 0;
+            background-color: rgba(226, 224, 224, 0.2);
+        }
+        
+        .clients-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .clients-header h2 {
+            font-size: 2.8rem;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .clients-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--medium-gray);
+        }
+        
+        .clients-header p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        .clients-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .client-logo-item {
+            text-align: center;
+            padding: 25px;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid rgba(185, 185, 185, 0.3);
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+        
+        .client-logo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 2px var(--medium-gray);
+            border-color: transparent;
+        }
+        
+        .client-logo {
+            max-width: 100%;
+            max-height: 80px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .client-logo-item:hover .client-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .client-testimonials {
+            margin-top: 30px;
+        }
+        
+        /* Premium Case for Client Logo */
+        .premium-case {
+            position: relative;
+            padding: 20px;
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .premium-case::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(185,185,185,0.1));
+            transform: rotate(45deg);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .premium-case:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 2px var(--medium-gray);
+        }
+        
+        .premium-case:hover::before {
+            transform: rotate(45deg) translate(20px, 20px);
+        }
+        
+        .premium-case-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 60px;
+            color: var(--medium-gray);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark-bg);
+        }
+        
+        .testimonial-info p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: rgba(226, 224, 224, 0.2);
+        }
+        
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-bg);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            transition: var(--transition);
+            background-color: var(--white);
+            color: var(--dark-bg);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--medium-gray);
+            box-shadow: 0 0 0 3px rgba(185, 185, 185, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-logo span {
+            color: var(--medium-gray);
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--medium-gray);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+        
+        .footer-heading {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--medium-gray);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: var(--light-gray);
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--medium-gray);
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-bg);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--medium-gray);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+        
+        /* RTL Support */
+        body[dir="rtl"] .header-content,
+        body[dir="rtl"] .about-content,
+        body[dir="rtl"] .footer-content {
+            direction: rtl;
+        }
+        
+        body[dir="rtl"] nav li {
+            margin-left: 0;
+            margin-right: 25px;
+        }
+        
+        body[dir="rtl"] nav a:after {
+            left: auto;
+            right: 0;
+        }
+        
+        body[dir="rtl"] .language-btn i {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        body[dir="rtl"] .premium-service-title::after {
+            left: auto;
+            right: 0;
+        }
+        
+        body[dir="rtl"] .premium-service-link i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        body[dir="rtl"] .premium-service-number {
+            left: auto;
+            right: 15px;
+        }
+        
+        body[dir="rtl"] .testimonial-avatar {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        body[dir="rtl"] .footer-heading:after {
+            left: auto;
+            right: 0;
+        }
+        
+        body[dir="rtl"] .footer-links a:hover {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        
+        body[dir="rtl"] .footer-contact i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        body[dir="rtl"] .form-group label {
+            text-align: right;
+        }
+        
+        body[dir="rtl"] .premium-rating i {
+            margin-left: 0;
+            margin-right: 2px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .services-premium-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                min-height: 70px;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--dark-bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 80px 40px;
+                transition: left 0.4s ease;
+                z-index: 999;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav li {
+                margin: 0;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            nav a {
+                padding: 15px 0;
+                font-size: 18px;
+                width: 100%;
+            }
+            
+            nav a:after {
+                bottom: 10px;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .language-selector {
+                position: absolute;
+                top: 50%;
+                right: 60px;
+                transform: translateY(-50%);
+                margin-left: 0;
+            }
+            
+            body[dir="rtl"] .language-selector {
+                right: auto;
+                left: 60px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-premium-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-item h3 {
+                font-size: 2.8rem;
+            }
+            
+            .clients-logos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .client-logo-item {
+                height: 120px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+            
+            nav ul {
+                width: 100%;
+            }
+            
+            .language-btn {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .clients-logos {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Content Padding to account for fixed header */
+        section {
+            scroll-margin-top: 80px;
+        }
+        
+        @media (max-width: 992px) {
+            section {
+                scroll-margin-top: 70px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Updated Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../Home/HomeImage/" class="logo">
+                    <img src="HomeImage/MesmatLogoArabic1.png" alt="MESMAT" class="logo-img">     <!-- style="border-radius:5%; border: 1px solid black;"-->             
+                </a>
+                
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="Home/index.html" target="_blank" class="active" data-translate="nav.home">Home</a></li>
+                        <li><a href="About/about.html" target="_blank" data-translate="nav.about">About</a></li>
+                        <li><a href="Services/services.html" target="_blank" data-translate="nav.services">Services</a></li>
+                        <li><a href="Partner/Partner.html" target="_blank" data-translate="nav.clients">Partner</a></li>
+                        <li><a href="Contact Us/contact.html" target="_blank" data-translate="nav.contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="language-selector" id="languageSelector">
+                    <button class="language-btn" id="languageBtn">
+                        <span id="current-language">EN</span> 
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#" class="language-option" data-lang="en">English</a>
+                        <a href="#" class="language-option" data-lang="ar">العربية</a>
+                    </div>
+                </div>
+                
+                <button class="mobile-nav-toggle" id="mobileNavToggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-translate="hero.title">MESMAT Company &amp;</h1>
+                <p data-translate="hero.subtitle">Mesmat is one of the Saudi establishments with extensive experience in the fields of Hospitality, Logistic, Mobility, and Auto Service.</p>
+                <a href="#services" class="btn" data-translate="hero.button">Explore Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="about.title">MESMAT Vision</h2>
+                <p data-translate="about.subtitle">Learn about our Vision to excellence</p>
+            </div>
+            <div class="about-content"> 
+                <div class="about-text">
+                    <h3 data-translate="about.story.title">MESMAT Vision</h3>
+                    <p data-translate="about.story.p1">MESMAT Vision To be the first strategic partner in the Kingdom in the fields of hospitality, hotel supplies, logistics services, smart mobility solutions, and vehicle maintenance, by providing integrated solutions and global brands that enhance the customer experience and meet the aspirations of the Saudi market, while actively contributing to achieving the goals of Vision 2030 by supporting economic diversification and developing vital sectors. </p>
+                    <p data-translate="about.story.p2"></p>
+                    <p data-translate="about.story.p3"> </p>
+                    <a href="../About/about.html" target="_blank" class="btn" data-translate="about.button">Learn More</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="MESMAT Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="services.title">Our Services</h2>
+                <p data-translate="services.subtitle">Discover our premium services tailored to your needs</p>
+            </div>
+            
+            <!-- Premium Services Grid -->
+            <div class="services-premium-grid">
+                <!--Card 1-->
+                <div class="premium-service-card">
+                    <div class="premium-service-number">01</div>
+                    <div class="premium-service-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel Supplies">
+                    </div>
+                    <div class="premium-service-content">
+                        <h3 class="premium-service-title" data-translate="services.1.title">MESMAT Hospitality</h3>
+                        <p class="premium-service-description" data-translate="services.1.desc">The specialized arm in hospitality supplies within the Kingdom of Saudi Arabia, combining global expertise with a deep understanding of local market needs.</p>
+                        <div class="premium-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!--Card 2-->
+                <div class="premium-service-card">
+                    <div class="premium-service-number">02</div>
+                    <div class="premium-service-image">
+                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Logistics Services">
+                    </div>
+                    <div class="premium-service-content">
+                        <h3 class="premium-service-title" data-translate="services.2.title">MESMAT Logistics</h3>
+                        <p class="premium-service-description" data-translate="services.2.desc">Your trusted partner in integrated logistics services within the Kingdom of Saudi Arabia.</p>
+                        <div class="premium-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!--Card 3-->
+                <div class="premium-service-card">
+                    <div class="premium-service-number">03</div>
+                    <div class="premium-service-image">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Automotive Care">
+                    </div>
+                    <div class="premium-service-content">
+                        <h3 class="premium-service-title" data-translate="services.3.title">MESMAT Mobility</h3>
+                        <p class="premium-service-description" data-translate="services.3.desc">At MobiliT, we offer modern and smart mobility solutions that support the contemporary lifestyle in the Kingdom and align with the aspirations of evolving Saudi cities.</p>
+                        <div class="premium-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!--Card 4-->
+                <div class="premium-service-card">
+                    <div class="premium-service-number">04</div>
+                    <div class="premium-service-image">
+                        <img src="https://images.unsplash.com/photo-1595425970377-2f8ded7c7b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Home Fragrance">
+                    </div>
+                    <div class="premium-service-content">
+                        <h3 class="premium-service-title" data-translate="services.4.title">MESMAT Auto Service</h3>
+                        <p class="premium-service-description" data-translate="services.4.desc">A comprehensive center that provides maintenance and repair services for vehicles according to the highest global standards, offering customers comprehensive solutions that ensure high quality and reliable performance in the long term.</p>
+                        <div class="premium-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>8+</h3>
+                    <p data-translate="stats.1">Years of Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1000+</h3>
+                    <p data-translate="stats.2">Clients Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4+</h3>
+                    <p data-translate="stats.3">Specialized Brands</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p data-translate="stats.4">Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Clients Section -->
+    <section class="clients-showcase" id="clients">
+        <div class="container">
+            <div class="clients-header">
+                <h2 data-translate="clients.title">Our Valued Clients</h2>
+                <p data-translate="clients.subtitle">We take pride in serving industry leaders across Saudi Arabia</p>
+            </div>
+            
+            <div class="premium-case">
+                <div class="premium-case-content">
+                    <img src="HomeImage/OurClients.png" alt="Our Valued Clients" style="max-width: 100%;">
+                </div>
+            </div>
+            
+            <div class="client-testimonials">
+                <div class="section-title">
+                    <h2 data-translate="testimonials.title">Client Testimonials</h2>
+                    <p data-translate="testimonials.subtitle">What our clients say about our services</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p data-translate="testimonials.1.text">MESMAT has been our trusted partner for hotel supplies for over 3 years. Their quality products and reliable service have significantly enhanced our guest experience.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmed Al-Saud">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Ahmed Al-Saud</h4>
+                                <p data-translate="testimonials.1.role">Hotel Manager, Riyadh</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p data-translate="testimonials.2.text">The logistics solutions provided by MESMAT have streamlined our operations and reduced costs. Their team is professional and always available to support our needs.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Sarah Johnson</h4>
+                                <p data-translate="testimonials.2.role">Operations Director, Jeddah</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p data-translate="testimonials.3.text">We've been using Arabian Scents products across our hotel chain, and our guests consistently compliment the luxurious atmosphere. The quality is exceptional.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Khalid Hassan">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Khalid Hassan</h4>
+                                <p data-translate="testimonials.3.role">CEO, Hospitality Group</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="commitment">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="commitment.title">Our Message</h2>
+                <p data-translate="commitment.subtitle">Driving excellence through innovation and customer focus</p>
+            </div>
+            <div class="commitment-content">
+                <p data-translate="commitment.text1">We strive at Masmat to establish new standards of excellence by providing a comprehensive system of services and products in the areas of hospitality, logistics services, smart mobility solutions, and vehicle maintenance.</p>
+                <p data-translate="commitment.text2">We rely on innovation, professionalism, and building strategic partnerships with global brands to be the first destination and the trusted choice for our clients in the Saudi market.</p>
+                <a href="#contact" class="btn" data-translate="commitment.button">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="contact.title">Contact Us</h2>
+                <p data-translate="contact.subtitle">Get in touch with our team</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-translate="contact.form.name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" data-translate="contact.form.email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" data-translate="contact.form.phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" data-translate="contact.form.service">Service Interest</label>
+                            <select id="service" class="form-control">
+                                <option value="" data-translate="form.subject.select">Select a subject</option>
+                                <option value="support" data-translate="form.subject.support">Technical Support</option>
+                                <option value="sales" data-translate="form.subject.sales">Sales Questions</option>
+                                <option value="partnership" data-translate="form.subject.partnership">Partnership Opportunities</option>
+                                <option value="other" data-translate="form.subject.other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" data-translate="contact.form.message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" data-translate="contact.form.button">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3 data-translate="contact.info.title">Get in Touch</h3>
+                    <p data-translate="contact.info.text">We're here to answer any questions you may have about our services. Reach out to us and we'll respond as soon as we can.</p>
+                    
+                    <div class="footer-contact" >
+                        <p><i class="fas fa-map-marker-alt"></i> <span data-translate="contact.info.address">Riyadh, Saudi Arabia</span></p>
+                        <p><i class="fas fa-phone"></i> +966 11 470 9911</p>
+                        <p><i class="fas fa-envelope"></i> info@mesmat.com</p>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h4 data-translate="contact.info.hours.title">Business Hours</h4>
+                        <p data-translate="contact.info.hours.weekdays">Sunday - Thursday: 8:00 AM - 6:00 PM</p>
+                        <p data-translate="contact.info.hours.weekend">Friday - Saturday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">MES<span>MAT</span></div>
+                    <p data-translate="footer.about">Redefining Hospitality &amp; Services through innovation and excellence since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section footer-links">
+                    <h4 class="footer-heading" data-translate="footer.links.quick.title">Quick Links</h4>
+                    <ul>
+                        <li><a href="../Home/index.html" target="_blank" data-translate="footer.links.quick.1">Home</a></li>
+                        <li><a href="../About/about.html" target="_blank" data-translate="footer.links.quick.2">About Us</a></li>
+                        <li><a href="../Services/services.html" target="_blank" data-translate="footer.links.quick.3">Services</a></li>
+                        <li><a href="../Partner/Partner.html" target="_blank" data-translate="footer.links.quick.4">Partners</a></li>
+                        <li><a href="../Contact Us/contact.html" target="_blank" data-translate="footer.links.quick.5">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-links">
+                    <h4 class="footer-heading" data-translate="footer.links.services.title">Our Services</h4>
+                    <ul>
+                        <li><a href="#services" data-translate="footer.links.services.1">Hospitality</a></li>
+                        <li><a href="#services" data-translate="footer.links.services.2">Logistics </a></li>
+                        <li><a href="#services" data-translate="footer.links.services.3">Mobility</a></li>
+                        <li><a href="#services" data-translate="footer.links.services.4">Auto Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h4 class="footer-heading" data-translate="footer.contact.title">Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-translate="footer.contact.address">Riyadh, Saudi Arabia</span></p>
+                    <p><i class="fas fa-phone"></i> +966 11 470 9911</p>
+                    <p><i class="fas fa-envelope"></i> info@mesmat.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 MESMAT. <span data-translate="footer.copyright">All Rights Reserved</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            const navMenu = document.getElementById('nav-menu');
+            const languageSelector = document.getElementById('languageSelector');
+            const languageBtn = document.getElementById('languageBtn');
+            const languageOptions = document.querySelectorAll('.language-option');
+            const currentLangSpan = document.getElementById('current-language');
+            const navLinks = document.querySelectorAll('nav a');
+            const backToTopBtn = document.querySelector('.back-to-top');
+            const contactForm = document.getElementById('contactForm');
+            
+            // Mobile Navigation Toggle
+            mobileNavToggle.addEventListener('click', () => {
+                mobileNavToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            // Close mobile menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNavToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    
+                    // Set active navigation link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+            
+            // Language Selector Toggle
+            languageBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                languageSelector.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!languageSelector.contains(e.target)) {
+                    languageSelector.classList.remove('active');
+                }
+            });
+            
+            // Header scroll effect
+            let lastScrollY = window.scrollY;
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.style.padding = '0';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
+                } else {
+                    header.style.padding = '';
+                    header.style.boxShadow = '';
+                }
+                
+                // Show/hide back to top button
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+                
+                lastScrollY = window.scrollY;
+            });
+            
+            // Back to top functionality
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Form submission
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Basic validation
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    
+                    let isValid = true;
+                    
+                    // Reset error states
+                    document.querySelectorAll('.form-control').forEach(input => {
+                        input.style.borderColor = '';
+                    });
+                    
+                    // Validate fields
+                    if (!name) {
+                        document.getElementById('name').style.borderColor = 'red';
+                        isValid = false;
+                    }
+                    
+                    if (!email || !isValidEmail(email)) {
+                        document.getElementById('email').style.borderColor = 'red';
+                        isValid = false;
+                    }
+                    
+                    if (!message) {
+                        document.getElementById('message').style.borderColor = 'red';
+                        isValid = false;
+                    }
+                    
+                    if (isValid) {
+                        // Simulate form submission
+                        alert('Thank you for your message! We will get back to you soon.');
+                        contactForm.reset();
+                    }
+                });
+            }
+            
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Translations object
+            const translations = {
+                'nav.home': { en: 'Home', ar: 'الرئيسية' },
+                'nav.about': { en: 'About', ar: 'عنّا' },
+                'nav.services': { en: 'Services', ar: 'خدماتنا' },
+                'nav.clients': { en: 'Partners', ar: 'الشركاء' },
+                'nav.contact': { en: 'Contact', ar: 'اتصل بنا' },
+                'hero.title': { en: 'MESMAT Company', ar: 'شركة ميسمات' },
+                'hero.subtitle': { en: 'Mesmat is one of the Saudi establishments with extensive experience in the fields of Hospitality, Logistic, Mobility, and Auto Service', ar: 'ميسمت هي واحدة من المنشآت السعودية ذات الخبرة الواسعة في مجالات الضيافة، واللوجستيات، والتنقل، وخدمات السيارات.' },
+                'hero.button': { en: 'Explore Our Services', ar: 'استكشف خدماتنا' },
+                'about.title': { en: 'MESMAT Vision', ar: 'رؤية مِسْمَات' },
+                'about.subtitle': { en: 'Learn about our Vision to excellence', ar: 'تعرف على رحلتنا نحو التميز' },
+                'about.story.title': { en: 'MESMAT Vision', ar: 'رؤية مسمات' },
+                'about.story.p1': { en: 'MESMAT vision To be the first strategic partner in the Kingdom in the fields of hospitality, hotel supplies, logistics services, smart mobility solutions, and vehicle maintenance, by providing integrated solutions and global brands that enhance the customer experience and meet the aspirations of the Saudi market, while actively contributing to achieving the goals of Vision 2030 by supporting economic diversification and developing vital sectors.', ar: 'أن نكون أول شريك استراتيجي في المملكة في مجالات الضيافة، وتوريد الفنادق، وخدمات اللوجستيات، وحلول التنقل الذكي، وصيانة المركبات، من خلال توفير حلول متكاملة وعلامات تجارية عالمية تعزز تجربة العملاء وتلبي تطلعات السوق السعودي، مع المساهمة الفعالة في تحقيق أهداف رؤية 2030 من خلال دعم التنويع الاقتصادي وتطوير القطاعات الحيوية.' },
+                'about.story.p2': { en: '', ar: '' },
+                'about.story.p3': { en: '', ar: '' },
+                'about.button': { en: 'Learn More', ar: 'اعرف المزيد' },
+                'services.title': { en: 'Our Services', ar: 'خدماتنا' },
+                'services.subtitle': { en: 'Discover our premium services tailored to your needs', ar: 'اكتشف خدماتنا المتميزة المصممة خصيصًا لاحتياجاتك' },
+                'services.1.title': { en: 'MESMAT Hospitality', ar: 'لوازم الفنادق والضيافة' },
+                'services.1.desc': { en: 'The specialized arm in hospitality supplies within the Kingdom of Saudi Arabia, combining global expertise with a deep understanding of local market needs.', ar: 'الذراع المتخصص في توريدات قطاع الضيافة داخل المملكة العربية السعودية، حيث يجمع بين الخبرة العالمية والفهم العميق لاحتياجات السوق المحلي.' },
+                'services.2.title': { en: 'MESMAT Logistics', ar: 'خدمات الخدمات اللوجستية والتنقل' },
+                'services.2.desc': { en: 'Your trusted partner in integrated logistics services within the Kingdom of Saudi Arabia.', ar: 'شريكك الموثوق في الخدمات اللوجستية المتكاملة داخل المملكة العربية السعودية.' },
+                'services.3.title': { en: 'MESMAT Mobility', ar: 'السكوترات الكهربائية ' },
+                'services.3.desc': { en: 'At MobiliT, we offer modern and smart mobility solutions that support the contemporary lifestyle in the Kingdom and align with the aspirations of the developing Saudi cities.', ar: 'نقدم في مسمات موبيليتي حلول تنقّل عصرية وذكية تدعم أسلوب الحياة الحديث في المملكة، وتواكب تطلعات المدن السعودية المتطورة.' },
+                'services.4.title': { en: 'MESMAT Auto Service', ar: 'خدمات السيارات' },
+                'services.4.desc': { en: 'A comprehensive center that provides maintenance and repair services for vehicles according to the highest global standards, offering customers comprehensive solutions that ensure high quality and reliable performance in the long term.', ar: 'مركز متكامل يقدم خدمات صيانة وإصلاح المركبات وفق أعلى المعايير العالمية، ليوفر للعملاء حلولًا شاملة تضمن جودة عالية وأداء موثوق على المدى الطويل.' },
+                'services.link': { en: 'Discover More', ar: 'اكتشف المزيد' },
+                'stats.1': { en: 'Years of Excellence', ar: 'سنوات من التميز' },
+                'stats.2': { en: 'Clients Served', ar: 'عميل مُخدم' },
+                'stats.3': { en: 'Specialized Brands', ar: 'علامة تجارية متخصصة' },
+                'stats.4': { en: 'Client Satisfaction', ar: 'رضا العملاء' },
+                'clients.title': { en: 'Our Valued Clients', ar: 'عملاؤنا الكرام' },
+                'clients.subtitle': { en: 'We take pride in serving industry leaders across Saudi Arabia', ar: 'نحن نفخر بخدمة رواد الصناعة جميع أنحاء المملكة العربية السعودية' },
+                'testimonials.title': { en: 'Client Testimonials', ar: 'آراء العملاء' },
+                'testimonials.subtitle': { en: 'What our clients say about our services', ar: 'ما يقوله عملاؤنا عن خدماتنا' },
+                'testimonials.1.text': { en: 'MESMAT has been our trusted partner for hotel supplies for over 3 years. Their quality products and reliable service have significantly enhanced our guest experience.', ar: 'كانت مسمات شريكنا الموثوق لتوريدات الفنادق لأكثر من 3 سنوات. منتجاتهم عالية الجودة وخدمتهم الموثوقة عززت بشكل كبير من تجربة ضيوفنا.' },
+                'testimonials.1.role': { en: 'Hotel Manager, Riyadh', ar: 'مدير فندق، الرياض' },
+                'testimonials.2.text': { en: 'The logistics solutions provided by MESMAT have streamlined our operations and reduced costs. Their team is professional and always available to support our needs.', ar: 'الحلول اللوجستية التي تقدمها مسمات قد نظمت عملياتنا وقللت التكاليف. فريقهم محترف ودائمًا متاح لدعم احتياجاتنا.' },
+                'testimonials.2.role': { en: 'Operations Director, Jeddah', ar: 'مدير العمليات، جدة' },
+                'testimonials.3.text': { en: 'We\'ve been using Arabian Scents products across our hotel chain, and our guests consistently compliment the luxurious atmosphere. The quality is exceptional.', ar: 'كنا نستخدم منتجات عطور عربية في سلسلة فنادقنا، ويشيد ضيوفنا باستمرار بالأجواء الفاخرة. الجودة استثنائية.' },
+                'testimonials.3.role': { en: 'CEO, Hospitality Group', ar: 'الرئيس التنفيذي، مجموعة الضيافة' },
+                'commitment.title': { en: 'Our Message', ar: 'رسالتنا' },
+                'commitment.subtitle': { en: 'Driving excellence through innovation and customer focus', ar: 'دفع التميز من خلال الابتكار والتركيز على العملاء' },
+                'commitment.text1': { en: 'We strive at Masmat to establish new standards of excellence by providing a comprehensive system of services and products in the areas of hospitality, logistics services, smart mobility solutions, and vehicle maintenance.', ar: 'نسعى في مسمات إلى إرساء معايير جديدة للتميز من خلال تقديم منظومة شاملة من الخدمات والمنتجات في قطاعات الضيافة، والخدمات اللوجستية، وحلول التنقل الذكي، وصيانة المركبات. ' },
+                'commitment.text2': { en: 'We rely on innovation, professionalism, and building strategic partnerships with global brands to be the first destination and the trusted choice for our clients in the Saudi market.', ar: 'نعتمد على الابتكار، والاحترافية، وبناء شراكات استراتيجية مع علامات عالمية، لنكون الوجهة الأولى وخيار الثقة لعملائنا في السوق السعودي.' },
+                'commitment.button': { en: 'Contact Us', ar: 'اتصل بنا' },
+                'contact.title': { en: 'Contact Us', ar: 'اتصل بنا' },
+                'contact.subtitle': { en: 'Get in touch with our team', ar: 'تواصل مع فريقنا' },
+                'contact.form.name': { en: 'Full Name', ar: 'الاسم الكامل' },
+                'contact.form.email': { en: 'Email Address', ar: 'البريد الإلكتروني' },
+                'contact.form.phone': { en: 'Phone Number', ar: 'رقم الهاتف' },
+                'contact.form.service': { en: 'Service Interest', ar: 'الخدمة المهتم بها' },
+                'contact.form.service.default': { en: 'Select a service', ar: 'اختر خدمة' },
+                'contact.form.service.1': { en: 'Hotel Supplies', ar: 'لوازم الفنادق' },
+                'contact.form.service.2': { en: 'Logistics Services', ar: 'خدمات لوجستية' },
+                'contact.form.service.3': { en: 'Automotive Care', ar: 'العناية بالسيارات' },
+                'contact.form.service.4': { en: 'Fragrance Products', ar: 'منتجات العطور' },
+                'contact.form.message': { en: 'Message', ar: 'الرسالة' },
+                'contact.form.button': { en: 'Send Message', ar: 'إرسال الرسالة' },
+                'contact.info.title': { en: 'Get in Touch', ar: 'تواصل معنا' },
+                'contact.info.text': { en: 'We\'re here to answer any questions you may have about our services. Reach out to us and we\'ll respond as soon as we can.', ar: 'نحن هنا للإجابة على أي أسئلة قد تكون لديك حول خدماتنا. تواصل معنا وسنرد في أقرب وقت ممكن.' },
+                'contact.info.address': { en: 'Riyadh, Saudi Arabia', ar: 'الرياض، المملكة العربية السعودية' },
+                'contact.info.hours.title': { en: 'Business Hours', ar: 'ساعات العمل' },
+                'contact.info.hours.weekdays': { en: 'Sunday - Thursday: 8:00 AM - 6:00 PM', ar: 'الأحد - الخميس: 8:00 صباحًا - 6:00 مساءً' },
+                'contact.info.hours.weekend': { en: 'Friday - Saturday: Closed', ar: 'الجمعة - السبت: مغلق' },
+                'footer.about': { en: 'Redefining Hospitality & Services through innovation and excellence since 2015.', ar: 'إعادة تعريف الضيافة والخدمات من خلال الابتكار والتميز منذ عام 2015.' },
+                'footer.links.quick.title': { en: 'Quick Links', ar: 'روابط سريعة' },
+                'footer.links.quick.1': { en: 'Home', ar: 'الرئيسية' },
+                'footer.links.quick.2': { en: 'About Us', ar: 'عنّا' },
+                'footer.links.quick.3': { en: 'Services', ar: 'خدماتنا' },
+                'footer.links.quick.4': { en: 'Our Clients', ar: 'عملاؤنا' },
+                'footer.links.quick.5': { en: 'Contact', ar: 'اتصل بنا' },
+                'footer.links.services.title': { en: 'Our Services', ar: 'خدماتنا' },
+                'footer.links.services.1': { en: 'Hospitality', ar: 'الضيافة' },
+                'footer.links.services.2': { en: 'Logistic', ar:'"الخدمات اللوجستية"' },
+                'footer.links.services.3': { en: 'Mobility', ar: 'الحركة والتنقل ' },
+                'footer.links.services.4': { en: 'Auto Service', ar: 'صيانة وإصلاح المركبات ' },
+                'footer.contact.title': { en: 'Contact Us', ar: 'اتصل بنا' },
+                'footer.contact.address': { en: 'Riyadh, Saudi Arabia', ar: 'مركز النمر، منطقة النخيلص.ب 230990 الرياض 11321، المملكة العربية السعودية' },
+                'footer.copyright': { en: 'All Rights Reserved', ar: 'جميع الحقوق محفوظة' }
+            };
+            
+            // Function to set language
+            const setLanguage = (lang) => {
+                document.documentElement.lang = lang;
+                document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+                currentLangSpan.textContent = lang.toUpperCase();
+                
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.dataset.translate;
+                    if (translations[key] && translations[key][lang]) {
+                        el.innerHTML = translations[key][lang];
+                    }
+                });
+                
+                // Save language preference
+                localStorage.setItem('preferredLanguage', lang);
+            };
+            
+            // Event listener for language options
+            languageOptions.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = e.currentTarget.dataset.lang;
+                    setLanguage(lang);
+                    languageSelector.classList.remove('active');
+                });
+            });
+            
+            // Set language based on user preference or default to English
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(preferredLanguage);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add animation to elements on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.premium-service-card, .stat-item, .testimonial-card, .client-logo-item');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initialize elements for animation
+            const animatedElements = document.querySelectorAll('.premium-service-card, .stat-item, .testimonial-card, .client-logo-item');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            // Trigger once on load in case elements are already in view
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>

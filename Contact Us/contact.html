@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MESMAT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-white: #FFFFFF;
+            --primary-black: #34343B;
+            --primary-silver: #4C4B4F;
+            --dark-silver: #34343B;
+            --light-silver: #E2E0E0;
+            --medium-silver: #B9B9B9;
+            --text-color: #333333;
+            --background: #f9f9f9;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body.rtl {
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Updated Header Styles */
+        header {
+            background-color: var( --primary-black);
+            color: var(--white);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            min-height: 80px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1001;
+        }
+        
+        .logo-img {
+            height: 50px;
+            transition: var(--transition);
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-left: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo span {
+            color: var(--light-silver);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav li {
+            margin-left: 25px;
+        }
+
+        body.rtl nav li {
+            margin-left: 0;
+            margin-right: 25px;
+        }
+        
+        nav a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-silver);
+            transition: var(--transition);
+        }
+
+        body.rtl nav a:after {
+            left: auto;
+            right: 0;
+        }
+        
+        nav a:hover {
+            color: var(--light-silver);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        /* Language Selector Styles */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--primary-white);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--light-silver);
+        }
+        
+        .language-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        body.rtl .language-btn i {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+
+        .language-selector.active .language-btn i {
+            transform: rotate(180deg);
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--primary-white);
+            border: 1px solid var(--light-silver);
+            border-radius: 4px;
+            min-width: 120px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .language-selector.active .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--light-silver);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: var(--background);
+            color: var(--primary-black);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--primary-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(52, 52, 59, 0.8), rgba(52, 52, 59, 0.8)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--primary-white);
+            text-align: center;
+            padding: 120px 0 80px;
+            margin-top: 0px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--medium-silver);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-silver);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .info-icon {
+            background-color: var(--primary-silver);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content p {
+            color: #666;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-silver);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            background-color: var(--primary-black);
+            color: #ffffff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-silver);
+        }
+
+         /* Footer Fixes */
+        footer {
+            background-color: var(--primary-black);
+            color: #ffffff;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3, .footer-section h4 {
+            color: var(--light-silver);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p, 
+        .footer-section a {
+            color: var(--medium-silver);
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: #ffffff;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-silver);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--light-silver);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--primary-silver);
+            color: var(--medium-silver);
+            font-size: 0.9rem;
+        }
+        
+        /* Location Section Fixes */
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            position: relative;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Responsive Design for Footer and Map */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary-black);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                z-index: 99;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 15px;
+                font-size: 18px;
+            }
+
+            .language-selector {
+                position: absolute;
+                top: 50%;
+                right: 70px;
+                transform: translateY(-50%);
+                z-index: 102;
+            }
+
+            body.rtl .language-selector {
+                right: auto;
+                left: 70px;
+            }
+
+            .header-content {
+                justify-content: space-between;
+            }
+            
+            .logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            /* Fix for logo on mobile */
+            .logo-img {
+                max-height: 40px;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../Home/HomeImage/" class="logo">
+                    <img src="ContactImage/MesmatLogoArabic1.png" alt="MESMAT" class="logo-img">     <!-- style="border-radius:5%; border: 1px solid black;"-->             
+                </a>
+                
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="../Home/index.html" target="_blank" class="active" data-translate="nav.home">Home</a></li>
+                        <li><a href="../About/about.html" target="_blank" data-translate="nav.about">About</a></li>
+                        <li><a href="../Services/services.html" target="_blank" data-translate="nav.services">Services</a></li>
+                        <li><a href="../Partner/Partner.html" target="_blank" data-translate="nav.clients">Partner</a></li>
+                        <li><a href="../Contact Us/contact.html" target="_blank" data-translate="nav.contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="language-selector" id="languageSelector">
+                    <button class="language-btn" id="languageBtn">
+                        <span id="current-language">EN</span> 
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#" class="language-option" data-lang="en">English</a>
+                        <a href="#" class="language-option" data-lang="ar">العربية</a>
+                    </div>
+                </div>
+                
+                <button class="mobile-nav-toggle" id="mobileNavToggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 data-translate="hero.title">Get in Touch</h1>
+            <p data-translate="hero.desc">We'd love to hear from you. Our team is always ready to connect and discuss how we can help you achieve your goals.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h3 data-translate="contact.visit">Visit Us</h3>
+                            <p data-translate="contact.address">Alnemer Center<br>Alnakheel Area <br>Riyadh, Kingdom of Saudi Arabia </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <h3 data-translate="contact.call">Call Us</h3>
+                            <p> +966 11 470 9911</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <h3 data-translate="contact.email">Email Us</h3>
+                            <p>info@mesmat.com</p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <div id="successMessage" class="success-message" data-translate="form.success">
+                        Thank you for your message! We'll get back to you soon.
+                    </div>
+                    <div id="errorMessage" class="error-message" data-translate="form.error">
+                        Please fill in all required fields correctly.
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-translate="form.name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" data-translate="form.email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" data-translate="form.phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company" data-translate="form.company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" data-translate="form.subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" data-translate="form.subject.select">Select a subject</option>
+                                <option value="support" data-translate="form.subject.support">Technical Support</option>
+                                <option value="sales" data-translate="form.subject.sales">Sales Questions</option>
+                                <option value="partnership" data-translate="form.subject.partnership">Partnership Opportunities</option>
+                                <option value="other" data-translate="form.subject.other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" data-translate="form.message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" data-translate="form.send">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section - Fixed -->
+    <section class="map-section" style="margin-bottom:50px; margin-top: 10px;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-black);" data-translate="map.title">Our Location</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57971.59079171482!2d46.702544891995274!3d24.753493267524785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee298f884937f%3A0xe0a5c0150295d5a!2zQWwgTmVtZXIgQ2VudGVyIEFsIE5ha2hlZWwgLSDZhdix2YPYsiDYp9mE2YbZhdixINin2YTZhtiu2YrZhA!5e0!3m2!1sar!2seg!4v1756493095759!5m2!1sar!2seg" 
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Fixed -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="logo">MES<span>MAT</span></h3>
+                    <p data-translate="footer.about">Your trusted partner for innovative solutions in hospitality and commercial sectors across Saudi Arabia.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer.links.title">Quick Links</h4>
+                    <ul>
+                        <li><a href="../Home/index.html" target="_blank" data-translate="nav.home">Home</a></li>
+                        <li><a href="../About/about.html" target="_blank" data-translate="nav.about">About</a></li>
+                        <li><a href="../Services/services.html" target="_blank" data-translate="nav.services">Services</a></li>
+                        <li><a href="../Partner/Partner.html" target="_blank" data-translate="nav.partners">Partners</a></li>
+                        <li><a href="../Contact Us/contact.html" target="_blank" data-translate="nav.contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer.services.title">Our Services</h4>
+                    <ul>
+                        <li><a href="../Services/services.html" data-translate="services.1.title">MESMAT Hospitality</a></li>
+                        <li><a href="../Services/services.html" data-translate="services.2.title">MESMAT Logistics </a></li>
+                        <li><a href="../Services/services.html" data-translate="services.3.title">MESMAT Auto Services</a></li>
+                        <li><a href="../Services/services.html" data-translate="services.4.title">MESMAT Mobility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer.contact.title">Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-translate="footer.contact.address">Al Nemer Center, Al Nakheel, Riyadh, Saudi Arabia</span></p>
+                    <p><i class="fas fa-phone"></i> <span>+966 11 470 9911</span></p>
+                    <p><i class="fas fa-envelope"></i> <span>info@mesmat.com</span></p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p data-translate="footer.copyright">&copy; 2025 MESMAT. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            const navMenu = document.getElementById('nav-menu');
+            const languageSelector = document.getElementById('languageSelector');
+            const languageBtn = document.getElementById('languageBtn');
+            const languageOptions = document.querySelectorAll('.language-option');
+            const currentLangSpan = document.getElementById('current-language');
+
+            // Mobile Navigation Toggle
+            mobileNavToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // Language Selector Toggle
+            languageBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                languageSelector.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                if (languageSelector.classList.contains('active')) {
+                    languageSelector.classList.remove('active');
+                }
+            });
+
+            // Form submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value.trim();
+                
+                let isValid = true;
+                
+                // Reset error states
+                document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
+                    input.style.borderColor = '#e9ecef';
+                });
+                
+                // Validate fields
+                if (!name) {
+                    document.getElementById('name').style.borderColor = '#dc3545';
+                    isValid = false;
+                }
+                
+                if (!email || !isValidEmail(email)) {
+                    document.getElementById('email').style.borderColor = '#dc3545';
+                    isValid = false;
+                }
+                
+                if (!subject) {
+                    document.getElementById('subject').style.borderColor = '#dc3545';
+                    isValid = false;
+                }
+                
+                if (!message) {
+                    document.getElementById('message').style.borderColor = '#dc3545';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Simulate form submission
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                }
+            });
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Translations object
+            const translations = {
+                'nav.home': { en: 'Home', ar: 'الرئيسية' },
+                'nav.about': { en: 'About', ar: 'عن الشركة' },
+                'nav.services': { en: 'Services', ar: 'الخدمات' },
+                'nav.brands': { en: 'Partners', ar: 'الشركاء' },
+                'nav.contact': { en: 'Contact', ar: 'اتصل بنا' },
+                'hero.title': { en: 'Get in Touch', ar: 'اتصل بنا' },
+                'hero.desc': { en: 'We\'d love to hear from you. Our team is always ready to connect and discuss how we can help you achieve your goals.', ar: 'نحن نحب أن نسمع منك. فريقنا دائماً على استعداد للتواصل ومناقشة كيف يمكننا مساعدتك في تحقيق أهدافك.' },
+                'contact.visit': { en: 'Visit Us', ar: 'زورنا' },
+                'contact.address': { en: 'Alnemer Center<br>Alnakheel Area <br>Riyadh, Kingdom of Saudi Arabia', ar: 'مركز النمر<br>حي النخيل <br>الرياض، المملكة العربية السعودية' },
+                'contact.call': { en: 'Call Us', ar: 'اتصل بنا' },
+                'contact.email': { en: 'Email Us', ar: 'راسلنا عبر البريد' },
+                'form.success': { en: 'Thank you for your message! We\'ll get back to you soon.', ar: 'شكراً لك على رسالتك! سوف نعود إليك قريباً.' },
+                'form.error': { en: 'Please fill in all required fields correctly.', ar: 'يرجى ملء جميع الحقول المطلوبة بشكل صحيح.' },
+                'form.name': { en: 'Full Name *', ar: 'الاسم الكامل *' },
+                'form.email': { en: 'Email Address *', ar: 'عنوان البريد الإلكتروني *' },
+                'form.phone': { en: 'Phone Number', ar: 'رقم الهاتف' },
+                'form.company': { en: 'Company', ar: 'الشركة' },
+                'form.subject': { en: 'Subject *', ar: 'الموضوع *' },
+                'form.subject.select': { en: 'Select a subject', ar: 'اختر موضوعاً' },
+                'form.subject.general': { en: 'General Inquiry', ar: 'استفسار عام' },
+                'form.subject.support': { en: 'Technical Support', ar: 'الدعم الفني' },
+                'form.subject.sales': { en: 'Sales Questions', ar: 'أسئلة المبيعات' },
+                'form.subject.partnership': { en: 'Partnership Opportunities', ar: 'فرص الشراكة' },
+                'form.subject.other': { en: 'Other', ar: 'أخرى' },
+                'form.message': { en: 'Message *', ar: 'الرسالة *' },
+                'form.send': { en: 'Send Message', ar: 'إرسال الرسالة' },
+                'map.title': { en: 'Our Location', ar: 'موقعنا' },
+                'footer.about': { en: 'Your trusted partner for innovative solutions in hospitality and commercial sectors across Saudi Arabia.', ar: 'شريكك الموثوق للحلول المبتكرة في قطاعي الضيافة والتجارة في جميع أنحاء المملكة العربية السعودية.' },
+                'footer.links.title': { en: 'Quick Links', ar: 'روابط سريعة' },
+                'footer.services.title': { en: 'Our Services', ar: 'خدماتنا' },
+                'footer.contact.title': { en: 'Contact Us', ar: 'اتصل بنا' },
+                'footer.contact.address': { en: 'Al Nemer Center, Al Nakheel, Riyadh, Saudi Arabia', ar: 'مركز النمر، النخيل، الرياض، المملكة العربية السعودية' },
+                'footer.copyright': { en: '© 2025 MESMAT. All Rights Reserved.', ar: '© 2025 مسمت. جميع الحقوق محفوظة.' },
+                'services.1.title': { en: 'MESMAT Hospitality', ar: 'مسمت للضيافة' },
+                'services.2.title': { en: 'MESMAT Logistics', ar: 'مسمت للخدمات اللوجستية' },
+                'services.3.title': { en: 'MESMAT Auto Services', ar: 'مسمت لخدمات السيارات' },
+                'services.4.title': { en: 'MESMAT Mobility', ar: 'مسمت للتنقل' }
+            };
+
+            // Function to set language
+            const setLanguage = (lang) => {
+                document.documentElement.lang = lang;
+                document.body.className = lang === 'ar' ? 'rtl' : '';
+                currentLangSpan.textContent = lang.toUpperCase();
+
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.dataset.translate;
+                    if (translations[key] && translations[key][lang]) {
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+                            // For form elements, set the placeholder or value if it's a button
+                            if (el.tagName === 'INPUT' && el.type !== 'button' && el.type !== 'submit') {
+                                el.placeholder = translations[key][lang];
+                            } else if (el.tagName === 'BUTTON' || (el.tagName === 'INPUT' && (el.type === 'button' || el.type === 'submit'))) {
+                                el.value = translations[key][lang];
+                            } else {
+                                el.innerHTML = translations[key][lang];
+                            }
+                        } else {
+                            el.innerHTML = translations[key][lang];
+                        }
+                    }
+                });
+            };
+
+            // Event listener for language options
+            languageOptions.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = e.currentTarget.dataset.lang;
+                    setLanguage(lang);
+                    languageSelector.classList.remove('active');
+                });
+            });
+
+            // Set default language on page load
+            setLanguage('en');
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

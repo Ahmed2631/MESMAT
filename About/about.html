@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MESMAT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #4C4B4F;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        body[dir="rtl"] {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* CSS Variables */
+        :root {
+            --light-gray: #E2E0E0;
+            --medium-gray: #B9B9B9;
+            --dark-gray: #4C4B4F;
+            --dark: #34343B;
+            --transition: all 0.3s ease;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            color: #ffffff;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo Styles */
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--light-gray);
+        }
+
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 25px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-gray);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--light-gray);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        /* Mobile Navigation Toggle */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+        }
+
+        .mobile-nav-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .language-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .language-btn i {
+            margin-left: 5px;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #ffffff;
+            width: 140px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            margin-top: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 101;
+        }
+
+        .language-selector.open .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            padding: 8px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .language-option:hover {
+            background: var(--light-gray);
+            color: var(--dark);
+        }
+
+        .language-option img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        /* RTL Support for Navigation */
+        body[dir="rtl"] .header-content {
+            direction: rtl;
+        }
+
+        body[dir="rtl"] nav li {
+            margin-left: 0;
+            margin-right: 25px;
+        }
+
+        body[dir="rtl"] nav a:after {
+            left: auto;
+            right: 0;
+        }
+
+        body[dir="rtl"] .language-btn i {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #f8f8f8 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--medium-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mission-card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .mission-card p {
+            color: var(--dark-gray);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--light-gray);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .team-image img {
+            transform: scale(1.1);
+        }
+
+        .team-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .team-info p {
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--medium-gray);
+        }
+
+        .value-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .value-item p {
+            color: var(--dark-gray);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-detail {
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .contact-detail h4 {
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .contact-detail p {
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #ffffff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--medium-gray);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--light-gray);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--dark-gray);
+            color: var(--medium-gray);
+        }
+
+        /* RTL Styles */
+        [dir="rtl"] .section-title::after {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        [dir="rtl"] .about-content {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .nav-menu {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .footer-content {
+            text-align: right;
+        }
+
+        [dir="rtl"] .language-btn {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                padding: 20px;
+                flex-direction: column;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 15px 0;
+                text-align: center;
+            }
+            
+            .mobile-nav-toggle {
+                display: flex;
+            }
+            
+            .header-content {
+                position: relative;
+            }
+            
+            .language-selector {
+                margin-left: 0;
+                position: static;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .mission-cards,
+            .values-grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .mission-card,
+            .value-item {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            [dir="rtl"] .footer-content {
+                text-align: center;
+            }
+        }
+
+        /*Footer*/
+        footer {
+            background-color: var(--dark);
+            color: #ffffff;
+            padding: 60px 0 30px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .footer-logo span {
+            color: var(--light-gray);
+        }
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
+            background-color: var(--light-gray);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--light-gray);
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--light-gray);
+            padding-left: 5px;
+        }
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--light-gray);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* RTL Support for Footer */
+        body[dir="rtl"] .footer-heading:after {
+            left: auto;
+            right: 0;
+        }
+        body[dir="rtl"] .footer-links a:hover {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        body[dir="rtl"] .footer-contact i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        body[dir="rtl"] .footer-content {
+            text-align: right;
+        }
+        body[dir="rtl"] .social-icons {
+            direction: ltr;
+        }
+        
+        /*Logo*/
+        .logo-img {
+            height: 50px;
+            transition: var(--transition);
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 50px;
+            }
+        }
+        
+        @media (max-width: 576px){
+            .logo-img {
+                height: 40px;
+            }
+        }
+        
+        /* Image Fallback */
+        .image-fallback {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e0e0e0 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="aboutImage/MesmatLogoArabic1.png" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <span style="display:none;" class="logo-text">MES<span>MAT</span></span>
+                </a>
+                
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="../Home/index.html" target="_blank" data-en="Home" data-ar="الرئيسية" class="active" data-translate="nav.home">Home</a></li>
+                        <li><a href="../About/about.html" target="_blank" data-en="About" data-ar="عنّا" data-translate="nav.about">About</a></li>
+                        <li><a href="../Services/services.html" target="_blank" data-en="Services" data-ar="خدماتنا" data-translate="nav.services">Services</a></li>
+                        <li><a href="../Partner/Partner.html" target="_blank" data-en="Partner" data-ar="الشركاء" data-translate="nav.clients">Partners</a></li>
+                        <li><a href="../Contact Us/contact.html" target="_blank" data-en="Contact" data-ar="اتصل بنا" data-translate="nav.contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="language-selector" id="languageSelector">
+                    <button class="language-btn" id="languageBtn">
+                        <span id="current-language">EN</span> 
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#" class="language-option" data-lang="en">English</a>
+                        <a href="#" class="language-option" data-lang="ar">العربية</a>
+                    </div>
+                </div>
+                
+                <button class="mobile-nav-toggle" id="mobileNavToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 id="hero-title" data-en="About MESMAT" data-ar="عن ميسمات">About MESMAT</h1>
+            <p id="hero-subtitle" data-en="MESMAT Company is a leading Saudi company founded in 2015 in Riyadh, to be a strategic partner in providing integrated solutions that cover several vital sectors." data-ar="شركة مسمات هي شركة سعودية رائدة تأسست عام 2015 في مدينة الرياض، لتكون شريكًا استراتيجيًا في تقديم حلول متكاملة تغطي عدة قطاعات حيوية.">
+                MESMAT Company is a leading Saudi company founded in 2015 in Riyadh, to be a strategic partner in providing integrated solutions that cover several vital sectors.
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title" id="our-story-title" data-en="Our Story" data-ar="قصتنا">Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 id="about-heading" data-en="Building the Future Together" data-ar="نبني المستقبل معًا">Building the Future Together</h3>
+                    <p id="about-p3" data-en="MESMAT was established in 2015 in Riyadh as a Saudi brand aimed at elevating the standards of supplying the hospitality and hotel sector." data-ar="تأسست مسامات في عام 2015 في الرياض كعلامة سعودية تهدف إلى رفع معايير توريد قطاع الضيافة والفنادق.">MESMAT was established in 2015 in Riyadh as a Saudi brand aimed at elevating the standards of supplying the hospitality and hotel sector.</p>
+                    <p id="about-p1" data-en="Since its inception, MESMAT has gained recognition in its field, becoming one of the most experienced Saudi companies in supplying the tourism and hotel sector. Through providing high-quality products, we have earned the trust of various clients in the hotel sector, both within and outside the Kingdom." data-ar="منذ نشأتها، حققت شركة مسامات شهرة في مجالها، وأصبحت واحدة من الشركات السعودية الأكثر خبرة في قطاع السياحة والفنادق. من خلال تقديم منتجات عالية الجودة، اكتسبنا ثقة عملاء مختلفين في قطاع الفنادق، سواء داخل المملكة أو خارجها.">Since its inception, MESMAT has gained recognition in its 
+                                        field, becoming one of the most experienced Saudi 
+                                        companies in supplying the tourism and hotel sector. 
+                                        Through providing high-quality products, we have earned 
+                                        the trust of various clients in the hotel sector, both within 
+                                        and outside the Kingdom.</p>
+                    <p id="about-p2" data-en="With the launch of Vision 2030 in 2016, we found our aspirations aligning with the vision, contributing to the advancement of tourism in the Kingdom and the enhancement of the hospitality and hotel sector." data-ar="مع إطلاق رؤية 2030 في عام 2016، وجدنا طموحاتنا تتوافق مع الرؤية، مما ساهم في تقدم السياحة في المملكة وتعزيز قطاع الضيافة والفنادق.">With the launch of Vision 2030 in 2016, we found our aspirations aligning with the vision, contributing to the advancement of tourism in the Kingdom and the enhancement of the hospitality and hotel sector.</p>
+                    
+                </div>
+                <div class="about-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/be74376d-e1d5-4249-ac9f-2af3ca29bbeb.png" alt="Modern corporate office building with glass architecture and professional workspace interior showcasing MESMAT's headquarters" onerror="this.style.display='none'; document.getElementById('image-fallback').style.display='flex'">
+                    <div id="image-fallback" class="image-fallback" style="display: none;">
+                        <i class="fas fa-building" style="font-size: 3rem; margin-right: 15px;"></i>
+                        <span>MESMAT Headquarters</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="section-title" id="our-purpose-title" data-en="Our Purpose" data-ar="هدفنا">Our Purpose</h2>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <h3 id="vision-title" data-en="Vision" data-ar="الرؤية">Vision</h3>
+                    <p id="vision-text" data-en="We firmly believe that the Kingdom stands as one of the richest and most alluring destinations for global tourists, boasting a profound history, rich cultural heritage, and significant economic stature." data-ar="نحن نؤمن بشدة أن المملكة تعتبر واحدة من أغنى وأجمل الوجهات للسياح العالميين، حيث تتمتع بتاريخ عميق وإرث ثقافي غني ومكانة اقتصادية مهمة.">We firmly believe that the Kingdom stands as one of the richest and most alluring destinations for global tourists, boasting a profound history, rich cultural heritage, and significant economic stature.</p>
+                </div>
+                <div class="mission-card">
+                    <h3 id="mission-title" data-en="Mission" data-ar="المهمة">Mission</h3>
+                    <p id="mission-text" data-en="Hence, it is our duty to elevate tourism in our Kingdom by delivering the highest quality products, especially tailored for our clients in the hospitality sector within the Kingdom and the wider region." data-ar="لذا، فإن من واجبنا تعزيز السياحة في مملكتنا من خلال تقديم أعلى جودة من المنتجات، مصممة خصيصًا لعملائنا في قطاع الضيافة داخل المملكة والمنطقة الأوسع.">Hence, it is our duty to elevate tourism in our Kingdom by delivering the highest quality products, especially tailored for our clients in the hospitality sector within the Kingdom and the wider region.</p>
+                </div>
+                <div class="mission-card">
+                    <h3 id="commitment-title" data-en="Commitment" data-ar="الالتزام">Commitment</h3>
+                    <p id="commitment-text" data-en="Our aspiration is to forge partnerships with the world's leading brands, ensuring the provision of exceptional products that cater to the unique needs of our distinguished clients in the hospitality sector. This commitment aims to guarantee that tourists and visitors have an unforgettable experience in our cherished Kingdom." data-ar="ملتزمون بالتميز في كل جانب من عملنا، من علاقات العملاء إلى الابتكار التكنولوجي والمسؤولية البيئية.">Our aspiration is to forge partnerships with the world's leading brands, ensuring the provision of exceptional products that cater to the unique needs of our distinguished clients in the hospitality sector. This commitment aims to guarantee that tourists and visitors have an unforgettable experience in our cherished Kingdom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title" id="our-values-title" data-en="Our Values" data-ar="قيمنا">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">⚡</div>
+                    <h3 id="value-innovation" data-en="Innovation" data-ar="الابتكار">Innovation</h3>
+                    <p id="value-innovation-text" data-en="Developing modern and unconventional solutions that align with the aspirations of the Saudi market and resonate with global changes." data-ar="تطوير حلول عصرية وغير تقليدية تواكب تطلعات السوق السعودي وتنسجم مع التغيرات العالمية.">Developing modern and unconventional solutions that align with the aspirations of the Saudi market and resonate with global changes.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h3 id="value-integrity" data-en="Partnership" data-ar="الشراكة">Partnership</h3>
+                    <p id="value-integrity-text" data-en="Building strong relationships with clients and partners based on trust, transparency, and mutual benefit." data-ar="بناء علاقات قوية مع العملاء والشركاء على أساس الثقة والشفافية والمنفعة المتبادلة.">Building strong relationships with clients and partners based on trust, transparency, and mutual benefit.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h3 id="value-excellence" data-en="Excellence" data-ar="التميز">Excellence</h3>
+                    <p id="value-excellence-text" data-en="Commitment to applying the highest quality standards in every product and service, to ensure true value and an exceptional experience for our customers." data-ar="الالتزام بتطبيق أعلى معايير الجودة في كل منتج وخدمة، لضمان تقديم قيمة حقيقية وتجربة استثنائية لعملائنا.">Commitment to applying the highest quality standards in every product and service, to ensure true value and an exceptional experience for our customers.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🌱</div>
+                    <h3 id="value-sustainability" data-en="Sustainability" data-ar="الاستدامة">Sustainability</h3>
+                    <p id="value-sustainability-text" data-en="Contributing to achieving the objectives of the Kingdom's Vision 2030 by supporting economic diversification and adopting sustainable practices that contribute to the development of vital sectors." data-ar="الإسهام في تحقيق مستهدفات رؤية المملكة 2030 عبر دعم التنوع الاقتصادي وتبني ممارسات مستدامة تسهم في تطوير القطاعات الحيوية.">Contributing to achieving the objectives of the Kingdom's Vision 2030 by supporting economic diversification and adopting sustainable practices that contribute to the development of vital sectors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3 class="footer-logo" data-en="MESMAT" data-ar="ميسمات">MES<span data-en="MAT" data-ar=" مات">MAT</span></h3>
+                    <p data-en="Your trusted partner for innovative solutions in hospitality and commercial sectors." data-ar="شريكك الموثوق للحلول المبتكرة في قطاع الضيافة والتجارة.">Your trusted partner for innovative solutions in hospitality and commercial sectors.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                    <ul>
+                        <li><a href="../Home/index.html" target="_blank" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="../About/about.html" target="_blank" data-en="About" data-ar="عن الشركة">About</a></li>
+                        <li><a href="../Services/services.html" target="_blank" data-en="Services" data-ar="الخدمات">Services</a></li>
+                        <li><a href="../Partner/Partner.html" target="_blank" data-en="Partners" data-ar="شركاؤنا">Partners</a></li>
+                        <li><a href="../Contact Us/contact.html" target="_blank" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading" data-en="Our Services" data-ar="خدماتنا">Our Services</h4>
+                    <ul>
+                        <li><a href="#" data-en="Hospitality" data-ar="الضيافة">Hospitality</a></li>
+                        <li><a href="#" data-en="Logistics" data-ar="الخدمات اللوجستية">Logistics</a></li>
+                        <li><a href="#" data-en="Mobility" data-ar="الحركة والتنقل">Mobility</a></li>
+                        <li><a href="#" data-en="Auto Service" data-ar="صيانة وإصلاح المركبات">Auto Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-heading" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-en="Riyadh, KSA" data-ar=" الرياض، المملكة العربية السعودية"> Riyadh, KSA</span></p>
+                    <p><i class="fas fa-phone"></i> <span data-en="+966 11 4709911" data-ar="+966 11 470 9911">+966 11 470 9911</span></p>
+                    <p><i class="fas fa-envelope"></i> <span data-en="info@mesmat.com" data-ar="info@mesmat.com">info@mesmat.com</span></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 <span data-en="MESMAT. All Rights Reserved." data-ar="ميسمات. جميع الحقوق محفوظة.">MESMAT. All Rights Reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelector = document.getElementById('languageSelector');
+            const languageBtn = document.getElementById('languageBtn');
+            const languageOptions = document.querySelectorAll('.language-option');
+            let currentLang = 'en';
+
+            // Mobile navigation toggle
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileNavToggle && navMenu) {
+                mobileNavToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileNavToggle.classList.remove('active');
+                });
+            });
+
+            // Check for saved language preference
+            const savedLang = localStorage.getItem('mesmatLang');
+            if (savedLang) {
+                currentLang = savedLang;
+                setLanguage(currentLang);
+            }
+
+            // Toggle language dropdown
+            languageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageSelector.classList.toggle('open');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!languageSelector.contains(e.target)) {
+                    languageSelector.classList.remove('open');
+                }
+            });
+
+            // Language selection
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                    languageSelector.classList.remove('open');
+                });
+            });
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('mesmatLang', currentLang);
+
+                // Update all elements with data attributes
+                const elements = document.querySelectorAll('[data-en], [data-ar]');
+                elements.forEach(element => {
+                    const text = element.getAttribute(`data-${currentLang}`);
+                    if (text) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = text;
+                        } else {
+                            element.textContent = text;
+                        }
+                    }
+                });
+
+                // Update current language indicator
+                document.getElementById('current-language').textContent = currentLang.toUpperCase();
+
+                // Update HTML direction and lang attribute
+                document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.lang = currentLang;
+
+                // Trigger animations for smooth transition
+                document.body.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                }, 50);
+            }
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(52, 52, 59, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.background = '#34343B';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Animate sections on scroll
+            const sections = document.querySelectorAll('.about-content, .mission-card, .team-member, .value-item');
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+            
+            // Logo fallback
+            const logoImg = document.querySelector('.logo-img');
+            const logoText = document.querySelector('.logo-text');
+            
+            if (logoImg && logoText) {
+                logoImg.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    logoText.style.display = 'block';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
