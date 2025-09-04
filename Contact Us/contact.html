@@ -43,22 +43,42 @@
         }
 
         /* Updated Header Styles */
+        
+        /* Header Styles - Fixed for scroll */
         header {
-            background-color: var( --primary-black);
-            color: var(--white);
-            padding: 0;
-            position: sticky;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
         }
-        
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header:hover {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        header.scrolled:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
         .header-content {
+            position: relative;
+            z-index: 2;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
             min-height: 80px;
         }
         
@@ -74,18 +94,6 @@
             transition: var(--transition);
         }
         
-        .logo-text {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--white);
-            margin-left: 12px;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .logo span {
-            color: var(--light-silver);
-        }
-
         nav {
             display: flex;
             align-items: center;
@@ -99,42 +107,44 @@
         
         nav li {
             margin-left: 25px;
-        }
-
-        body.rtl nav li {
-            margin-left: 0;
-            margin-right: 25px;
+            position: relative;
         }
         
         nav a {
-            color: var(--primary-white);
+            color: black;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            padding: 30px 0;
+            display: inline-block;
+            font-size: 16px;
         }
         
         nav a:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 25px;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--light-silver);
+            background-color: var(--medium-gray);
             transition: var(--transition);
-        }
-
-        body.rtl nav a:after {
-            left: auto;
-            right: 0;
         }
         
         nav a:hover {
-            color: var(--light-silver);
+            color: var(--medium-gray);
         }
         
         nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--medium-gray);
+        }
+        
+        nav a.active:after {
             width: 100%;
         }
 
@@ -253,6 +263,7 @@
 
         /* Contact Section */
         .contact-section {
+            background-size: cover;
             padding: 80px 0;
             background-color: #ffffff;
         }
@@ -566,23 +577,23 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="../Home/HomeImage/" class="logo">
+                <a href="Home/index.html" class="logo">
                     <img src="ContactImage/MesmatLogoArabic1.png" alt="MESMAT" class="logo-img">     <!-- style="border-radius:5%; border: 1px solid black;"-->             
                 </a>
                 
                 <nav>
                     <ul id="nav-menu">
-                        <li><a href="../Home/index.html" target="_blank" class="active" data-translate="nav.home">Home</a></li>
-                        <li><a href="../About/about.html" target="_blank" data-translate="nav.about">About</a></li>
-                        <li><a href="../Services/services.html" target="_blank" data-translate="nav.services">Services</a></li>
-                        <li><a href="../Partner/Partner.html" target="_blank" data-translate="nav.clients">Partner</a></li>
-                        <li><a href="../Contact Us/contact.html" target="_blank" data-translate="nav.contact">Contact</a></li>
+                        <li><a href="../Home/index.html" target="_blank"  data-translate="nav.home">الرئيسية</a></li>
+                        <li><a href="../About/about.html" target="_blank" data-translate="nav.about">عنّا</a></li>
+                        <li><a href="../Services/services.html" target="_blank" data-translate="nav.services">خدماتنا</a></li>
+                        <li><a href="../Partner/Partner.html" target="_blank" data-translate="nav.clients">الشركاء</a></li>
+                        <li><a href="../Contact Us/contact.html" target="_blank" data-translate="nav.contact">اتصل بنا</a></li>
                     </ul>
                 </nav>
                 
                 <div class="language-selector" id="languageSelector">
                     <button class="language-btn" id="languageBtn">
-                        <span id="current-language">EN</span> 
+                        <span id="current-language">AR</span> 
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="language-dropdown">
@@ -697,7 +708,7 @@
     </section>
 
     <!-- Map Section - Fixed -->
-    <section class="map-section" style="margin-bottom:50px; margin-top: 10px;">
+    <section class="map-section" style="margin-bottom:50px; margin-top: 10px ;">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-black);" data-translate="map.title">Our Location</h2>
             <div class="map-container">
@@ -850,8 +861,8 @@
             // Translations object
             const translations = {
                 'nav.home': { en: 'Home', ar: 'الرئيسية' },
-                'nav.about': { en: 'About', ar: 'عن الشركة' },
-                'nav.services': { en: 'Services', ar: 'الخدمات' },
+                'nav.about': { en: 'About', ar: 'عنّا' },
+                'nav.services': { en: 'Services', ar: 'خدماتنا' },
                 'nav.brands': { en: 'Partners', ar: 'الشركاء' },
                 'nav.contact': { en: 'Contact', ar: 'اتصل بنا' },
                 'hero.title': { en: 'Get in Touch', ar: 'اتصل بنا' },

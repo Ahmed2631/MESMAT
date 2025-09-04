@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MESMAT - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap">
 
@@ -28,7 +30,7 @@
             background-color: var(--white);
             color: var(--dark-bg);
             line-height: 1.6;
-            font-family: 'Montserrat', sans-serif;
+            font-family: Roboto; 
             overflow-x: hidden;
         }
         
@@ -44,6 +46,7 @@
         }
         
         /* Updated Header Styles */
+        /*
         header {
             background-color: var(--dark-bg);
             color: var(--white);
@@ -140,18 +143,151 @@
         nav a.active:after {
             width: 100%;
         }
+        */
+        /* Enhanced premium styling for all options */
+    header {
+    background: rgba(255, 255, 255, 0.1); /* 10% opacity white */
+    backdrop-filter: blur(10px); /* Glass morphism effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: fixed; /* Recommended for overlay effect */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for premium feel */
+header:hover {
+    background: rgba(255, 255, 255, 0.15); /* Slightly more opaque on hover */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure text remains readable */
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Optional: Add text shadow for better readability */
+nav ul li a {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            min-height: 80px;
+        }
         
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1001;
+        }
+        
+        .logo-img {
+            height: 50px;
+            transition: var(--transition);
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-left: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-text span {
+            color: var(--medium-gray);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav a {
+            color: black; /*var(--white)*/
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 30px 0;
+            display: inline-block;
+            font-size: 16px;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--medium-gray);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--medium-gray);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--medium-gray);
+        }
+        
+        nav a.active:after {
+            width: 100%;
+        }
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    header {
+        backdrop-filter: blur(15px); /* More blur on mobile for better readability */
+        -webkit-backdrop-filter: blur(15px);
+    }
+}
+
+/* Alternative: Scroll-based transparency (Premium effect) */
+header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
         /* Language Selector Styles */
         .language-selector {
             position: relative;
             display: inline-block;
             margin-left: 20px;
+            color: black;
         }
         
         .language-btn {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--white);
+            color: black; /* var(--white) */
             padding: 8px 15px;
             border-radius: 4px;
             cursor: pointer;
@@ -178,8 +314,8 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background: var(--white);
-            border: 1px solid var(--light-gray);
+            background: var(--white); /*var(--white)*/
+            border: 1px solid var(--white); /*var(--light-gray)*/
             border-radius: 4px;
             min-width: 120px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -211,7 +347,7 @@
 
         .language-option:hover {
             background: rgba(226, 224, 224, 0.1);
-            color: var(--dark-bg);
+            color: var(--dark-bg); /*var(--dark-bg)*/
         }
         
         /* Mobile Navigation */
@@ -329,11 +465,18 @@
         
         .section-title h2 {
             font-size: 2.8rem;
-            color: var(--dark-bg);
+            color: var(--dark-bg); /*var(--dark-bg)*/
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
             font-family: 'Playfair Display', serif;
+        }
+
+        .commitment .section-title h2{
+            color: white;
+        }
+        .commitment .section-title p{
+            color: white;
         }
         
         .section-title h2:after {
@@ -348,10 +491,23 @@
         }
         
         .section-title p {
-            color: var(--dark-gray);
+            color: var(--dark-bg); /*var(--dark-bg)*/
             max-width: 700px;
             margin: 20px auto 0;
             font-size: 1.1rem;
+        }
+
+        .client-testimonials .section-title p {
+            color: var(--dark-bg); /*var(--dark-bg)*/
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        .client-testimonials .section-title h2 {
+            color: var(--dark-bg); /*var(--dark-bg)*/
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 2.9rem;
         }
         
         .about-content {
@@ -484,7 +640,7 @@
         }
         
         .premium-service-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--dark-bg);
@@ -561,7 +717,7 @@
         }
         
         .premium-rating i {
-            color: var(--medium-gray);
+            color: goldenrod ; /*var(--medium-gray)*/
             margin-right: 2px;
             font-size: 0.9rem;
         }
@@ -601,6 +757,11 @@
             padding: 100px 0;
             background-color: var(--white);
             text-align: center;
+            /**/
+            background: linear-gradient(rgba(52, 52, 59, 0.8), rgba(52, 52, 59, 0.8)), url('https://images.pexels.com/photos/599982/pexels-photo-599982.jpeg');
+            background-size: cover;
+            color: white;
+            /**/
         }
         
         .commitment-content {
@@ -611,7 +772,7 @@
         .commitment-content p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            color: var(--dark-gray);
+            color: white; /*var(--dark-gray)*/
             line-height: 1.8;
         }
         
@@ -1270,8 +1431,8 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="../Home/HomeImage/" class="logo">
-                    <img src="HomeImage/MesmatLogoArabic1.png" alt="MESMAT" class="logo-img">     <!-- style="border-radius:5%; border: 1px solid black;"-->             
+                <a href="Home/index.html" class="logo">
+                    <img src="MesmatLogoArabic1.png" alt="MESMAT" class="logo-img">     <!-- style="border-radius:5%; border: 1px solid black;"-->             
                 </a>
                 
                 <nav>
@@ -1341,95 +1502,140 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2 data-translate="services.title">Our Services</h2>
-                <p data-translate="services.subtitle">Discover our premium services tailored to your needs</p>
+  <div class="container">
+    <div class="section-title">
+      <h2 data-translate="services.title">Our Services</h2>
+      <p data-translate="services.subtitle">
+        Discover our premium services tailored to your needs
+      </p>
+    </div>
+
+    <div class="row services-premium-grid">
+      <!-- Card 01 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="premium-service-card">
+          <div class="premium-service-number">01</div>
+          <div class="premium-service-image">
+            <img
+              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Hotel Supplies"
+            >
+          </div>
+          <div class="premium-service-content">
+            <h3 class="premium-service-title" data-translate="services.1.title">
+              MESMAT Hospitality
+            </h3>
+            <p class="premium-service-description" data-translate="services.1.desc">
+              The specialized arm in hospitality supplies within the Kingdom of Saudi Arabia, combining global expertise with a deep understanding of local market needs
+            </p>
+            <div class="premium-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-            
-            <!-- Premium Services Grid -->
-            <div class="services-premium-grid">
-                <!--Card 1-->
-                <div class="premium-service-card">
-                    <div class="premium-service-number">01</div>
-                    <div class="premium-service-image">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel Supplies">
-                    </div>
-                    <div class="premium-service-content">
-                        <h3 class="premium-service-title" data-translate="services.1.title">MESMAT Hospitality</h3>
-                        <p class="premium-service-description" data-translate="services.1.desc">The specialized arm in hospitality supplies within the Kingdom of Saudi Arabia, combining global expertise with a deep understanding of local market needs.</p>
-                        <div class="premium-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!--Card 2-->
-                <div class="premium-service-card">
-                    <div class="premium-service-number">02</div>
-                    <div class="premium-service-image">
-                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Logistics Services">
-                    </div>
-                    <div class="premium-service-content">
-                        <h3 class="premium-service-title" data-translate="services.2.title">MESMAT Logistics</h3>
-                        <p class="premium-service-description" data-translate="services.2.desc">Your trusted partner in integrated logistics services within the Kingdom of Saudi Arabia.</p>
-                        <div class="premium-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!--Card 3-->
-                <div class="premium-service-card">
-                    <div class="premium-service-number">03</div>
-                    <div class="premium-service-image">
-                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Automotive Care">
-                    </div>
-                    <div class="premium-service-content">
-                        <h3 class="premium-service-title" data-translate="services.3.title">MESMAT Mobility</h3>
-                        <p class="premium-service-description" data-translate="services.3.desc">At MobiliT, we offer modern and smart mobility solutions that support the contemporary lifestyle in the Kingdom and align with the aspirations of evolving Saudi cities.</p>
-                        <div class="premium-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!--Card 4-->
-                <div class="premium-service-card">
-                    <div class="premium-service-number">04</div>
-                    <div class="premium-service-image">
-                        <img src="https://images.unsplash.com/photo-1595425970377-2f8ded7c7b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Home Fragrance">
-                    </div>
-                    <div class="premium-service-content">
-                        <h3 class="premium-service-title" data-translate="services.4.title">MESMAT Auto Service</h3>
-                        <p class="premium-service-description" data-translate="services.4.desc">A comprehensive center that provides maintenance and repair services for vehicles according to the highest global standards, offering customers comprehensive solutions that ensure high quality and reliable performance in the long term.</p>
-                        <div class="premium-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <a href="#" class="premium-service-link" data-translate="services.link">Discover More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+            <a href="#" class="premium-service-link" data-translate="services.link">
+              Discover More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
+      </div>
+
+      <!-- Card 02 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="premium-service-card">
+          <div class="premium-service-number">02</div>
+          <div class="premium-service-image">
+            <img
+              src="https://images.pexels.com/photos/1211787/pexels-photo-1211787.jpeg"
+              alt="Logistics Services"
+            >
+          </div>
+          <div class="premium-service-content">
+            <h3 class="premium-service-title" data-translate="services.2.title">
+              MESMAT Logistics
+            </h3>
+            <p class="premium-service-description" data-translate="services.2.desc">
+                We are your trusted partner in integrated logistics across the Kingdom of Saudi Arabia. From warehousing and customs clearance to transportation.
+            </p>
+            <div class="premium-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="premium-service-link" data-translate="services.link">
+              Discover More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 03 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="premium-service-card">
+          <div class="premium-service-number">03</div>
+          <div class="premium-service-image">
+            <img
+              src="https://images.pexels.com/photos/14998022/pexels-photo-14998022.jpeg"
+              alt="Automotive Care"
+            >
+          </div>
+          <div class="premium-service-content">
+            <h3 class="premium-service-title" data-translate="services.3.title">
+              MESMAT Mobility
+            </h3>
+            <p class="premium-service-description" data-translate="services.3.desc">
+              At MobiliT, we offer modern and smart mobility solutions that support the modern lifestyle in the Kingdom and align with the aspirations of the developing Saudi cities.
+            </p>
+            <div class="premium-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="premium-service-link" data-translate="services.link">
+              Discover More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 04 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="premium-service-card">
+          <div class="premium-service-number">04</div>
+          <div class="premium-service-image">
+            <img
+              src="https://media.istockphoto.com/id/1919361179/photo/selective-focus-on-a-drill-and-drawer-with-tools-on-a-mechanic-toolbox-with-worker-fixing-car.jpg?s=612x612&w=0&k=20&c=gu7WC84ZXMetA8dIyx2KU8_G-u9q64IkHT-X1TdheXs="
+              alt="Luxury Home Fragrance"
+            >
+          </div>
+          <div class="premium-service-content">
+            <h3 class="premium-service-title" data-translate="services.4.title">
+              MESMAT Auto Service
+            </h3>
+            <p class="premium-service-description" data-translate="services.4.desc">
+              All-in-one automotive service center delivering repairs and maintenance to the highest international standards, ensuring lasting quality and reliable performance.
+            </p>
+            <div class="premium-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <a href="#" class="premium-service-link" data-translate="services.link">
+              Discover More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </section>
 
     <!-- Stats Section -->
@@ -1466,7 +1672,7 @@
             
             <div class="premium-case">
                 <div class="premium-case-content">
-                    <img src="HomeImage/OurClients.png" alt="Our Valued Clients" style="max-width: 100%;">
+                    <img src="../MESMAT/Home/HomeImage/OurClients.png" alt="Our Valued Clients" style="max-width: 100%;">
                 </div>
             </div>
             
@@ -1483,11 +1689,11 @@
                         </div>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmed Al-Saud">
+                                <img src="../Partner Img/Abert.png" alt="Ahmed Al-Saud">
                             </div>
                             <div class="testimonial-info">
-                                <h4>Ahmed Al-Saud</h4>
-                                <p data-translate="testimonials.1.role">Hotel Manager, Riyadh</p>
+                                <h4>Ahmed From Abert</h4>
+                                <p data-translate="testimonials.1.role">Manager, Riyadh</p>
                             </div>
                         </div>
                     </div>
@@ -1498,10 +1704,10 @@
                         </div>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                                <img src="../Partner Img/AMT.jpg" alt="Sarah Johnson">
                             </div>
                             <div class="testimonial-info">
-                                <h4>Sarah Johnson</h4>
+                                <h4>Sarah From AMT</h4>
                                 <p data-translate="testimonials.2.role">Operations Director, Jeddah</p>
                             </div>
                         </div>
@@ -1509,15 +1715,15 @@
                     
                     <div class="testimonial-card">
                         <div class="testimonial-content">
-                            <p data-translate="testimonials.3.text">We've been using Arabian Scents products across our hotel chain, and our guests consistently compliment the luxurious atmosphere. The quality is exceptional.</p>
+                            <p data-translate="testimonials.3.text">We proudly incorporate authentic Arabic perfume products throughout our hotel chain, crafting an atmosphere that blends tradition with elegance.(We strongly recommend MESMAT Brands.)</p>
                         </div>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">
-                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Khalid Hassan">
+                                <img src="../Partner Img/Follett.png" alt="Khalid Hassan">
                             </div>
                             <div class="testimonial-info">
-                                <h4>Khalid Hassan</h4>
-                                <p data-translate="testimonials.3.role">CEO, Hospitality Group</p>
+                                <h4>Khalid From Follett</h4>
+                                <p data-translate="testimonials.3.role">CEO, Follett</p>
                             </div>
                         </div>
                     </div>
@@ -1801,13 +2007,13 @@
                 'services.title': { en: 'Our Services', ar: 'خدماتنا' },
                 'services.subtitle': { en: 'Discover our premium services tailored to your needs', ar: 'اكتشف خدماتنا المتميزة المصممة خصيصًا لاحتياجاتك' },
                 'services.1.title': { en: 'MESMAT Hospitality', ar: 'لوازم الفنادق والضيافة' },
-                'services.1.desc': { en: 'The specialized arm in hospitality supplies within the Kingdom of Saudi Arabia, combining global expertise with a deep understanding of local market needs.', ar: 'الذراع المتخصص في توريدات قطاع الضيافة داخل المملكة العربية السعودية، حيث يجمع بين الخبرة العالمية والفهم العميق لاحتياجات السوق المحلي.' },
-                'services.2.title': { en: 'MESMAT Logistics', ar: 'خدمات الخدمات اللوجستية والتنقل' },
-                'services.2.desc': { en: 'Your trusted partner in integrated logistics services within the Kingdom of Saudi Arabia.', ar: 'شريكك الموثوق في الخدمات اللوجستية المتكاملة داخل المملكة العربية السعودية.' },
+                'services.1.desc': { en: 'The specialized arm in hospitality supplies within the Kingdom of Saudi Arabia, combining global expertise with a deep understanding of local market needs', ar: 'الذراع المتخصص في توريدات قطاع الضيافة داخل المملكة العربية السعودية، حيث يجمع بين الخبرة العالمية والفهم العميق لاحتياجات السوق المحلي.' },
+                'services.2.title': { en: 'MESMAT Logistics', ar: ' الخدمات اللوجستية والتنقل' },
+                'services.2.desc': { en: 'We are your trusted partner in integrated logistics across the Kingdom of Saudi Arabia. From warehousing and customs clearance to transportation', ar: 'نحن شريكك الموثوق في اللوجستيات المتكاملة عبر المملكة العربية السعودية. من التخزين وإجراءات التخليص الجمركي إلى النقل' },
                 'services.3.title': { en: 'MESMAT Mobility', ar: 'السكوترات الكهربائية ' },
-                'services.3.desc': { en: 'At MobiliT, we offer modern and smart mobility solutions that support the contemporary lifestyle in the Kingdom and align with the aspirations of the developing Saudi cities.', ar: 'نقدم في مسمات موبيليتي حلول تنقّل عصرية وذكية تدعم أسلوب الحياة الحديث في المملكة، وتواكب تطلعات المدن السعودية المتطورة.' },
+                'services.3.desc': { en: 'At MobiliT, we offer modern and smart mobility solutions that support the modern lifestyle in the Kingdom and align with the aspirations of the developing Saudi cities.', ar: 'في موليتي، نقدم حلول تنقل حديثة وذكية تدعم أسلوب الحياة العصري في المملكة وتتماشى مع تطلعات المدن السعودية النامية.' },
                 'services.4.title': { en: 'MESMAT Auto Service', ar: 'خدمات السيارات' },
-                'services.4.desc': { en: 'A comprehensive center that provides maintenance and repair services for vehicles according to the highest global standards, offering customers comprehensive solutions that ensure high quality and reliable performance in the long term.', ar: 'مركز متكامل يقدم خدمات صيانة وإصلاح المركبات وفق أعلى المعايير العالمية، ليوفر للعملاء حلولًا شاملة تضمن جودة عالية وأداء موثوق على المدى الطويل.' },
+                'services.4.desc': { en: 'All-in-one automotive service center delivering repairs and maintenance to the highest international standards, ensuring lasting quality and reliable performance.', ar: 'مركز خدمة سيارات متكامل يقدم الصيانة والإصلاحات لأعلى المعايير الدولية، مما يضمن جودة دائمة وأداء موثوق.' },
                 'services.link': { en: 'Discover More', ar: 'اكتشف المزيد' },
                 'stats.1': { en: 'Years of Excellence', ar: 'سنوات من التميز' },
                 'stats.2': { en: 'Clients Served', ar: 'عميل مُخدم' },
@@ -1817,12 +2023,12 @@
                 'clients.subtitle': { en: 'We take pride in serving industry leaders across Saudi Arabia', ar: 'نحن نفخر بخدمة رواد الصناعة جميع أنحاء المملكة العربية السعودية' },
                 'testimonials.title': { en: 'Client Testimonials', ar: 'آراء العملاء' },
                 'testimonials.subtitle': { en: 'What our clients say about our services', ar: 'ما يقوله عملاؤنا عن خدماتنا' },
-                'testimonials.1.text': { en: 'MESMAT has been our trusted partner for hotel supplies for over 3 years. Their quality products and reliable service have significantly enhanced our guest experience.', ar: 'كانت مسمات شريكنا الموثوق لتوريدات الفنادق لأكثر من 3 سنوات. منتجاتهم عالية الجودة وخدمتهم الموثوقة عززت بشكل كبير من تجربة ضيوفنا.' },
-                'testimonials.1.role': { en: 'Hotel Manager, Riyadh', ar: 'مدير فندق، الرياض' },
+                'testimonials.1.text': { en: 'MESMAT has been our trusted partner for hotel supplies for over 3 years. Their quality products and reliable service have significantly enhanced our guest experience.', ar: 'كانت مسمات شريكنا الموثوق لتوريدات الفنادق لأكثر من 3 سنوات. منتجاتهم عالية الجودة وخدمتهم الموثوقة عززت بشكل كبير من التجريه.' },
+                'testimonials.1.role': { en: 'Hotel Manager, Riyadh', ar: 'مدير الشركه، الرياض' },
                 'testimonials.2.text': { en: 'The logistics solutions provided by MESMAT have streamlined our operations and reduced costs. Their team is professional and always available to support our needs.', ar: 'الحلول اللوجستية التي تقدمها مسمات قد نظمت عملياتنا وقللت التكاليف. فريقهم محترف ودائمًا متاح لدعم احتياجاتنا.' },
                 'testimonials.2.role': { en: 'Operations Director, Jeddah', ar: 'مدير العمليات، جدة' },
-                'testimonials.3.text': { en: 'We\'ve been using Arabian Scents products across our hotel chain, and our guests consistently compliment the luxurious atmosphere. The quality is exceptional.', ar: 'كنا نستخدم منتجات عطور عربية في سلسلة فنادقنا، ويشيد ضيوفنا باستمرار بالأجواء الفاخرة. الجودة استثنائية.' },
-                'testimonials.3.role': { en: 'CEO, Hospitality Group', ar: 'الرئيس التنفيذي، مجموعة الضيافة' },
+                'testimonials.3.text': { en: 'We proudly incorporate authentic Arabic perfume products throughout our hotel chain, crafting an atmosphere that blends tradition with elegance.(We strongly recommend MESMAT Brands.)', ar: 'نحن نفخر بإدماج منتجات العطور العربية الأصلية في جميع فنادقنا، مما يخلق جوًا يمزج بين التقليد والأناقة.' },
+                'testimonials.3.role': { en: 'CEO, Hospitality Group', ar: 'الرئيس التنفيذي، الرياض ' },
                 'commitment.title': { en: 'Our Message', ar: 'رسالتنا' },
                 'commitment.subtitle': { en: 'Driving excellence through innovation and customer focus', ar: 'دفع التميز من خلال الابتكار والتركيز على العملاء' },
                 'commitment.text1': { en: 'We strive at Masmat to establish new standards of excellence by providing a comprehensive system of services and products in the areas of hospitality, logistics services, smart mobility solutions, and vehicle maintenance.', ar: 'نسعى في مسمات إلى إرساء معايير جديدة للتميز من خلال تقديم منظومة شاملة من الخدمات والمنتجات في قطاعات الضيافة، والخدمات اللوجستية، وحلول التنقل الذكي، وصيانة المركبات. ' },
@@ -1944,5 +2150,6 @@
             animateOnScroll();
         });
     </script>
+
 </body>
 </html>

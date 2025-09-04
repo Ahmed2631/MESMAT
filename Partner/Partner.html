@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partnership Program - Professional Partners Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" /> <!--For Slider -->
     <script>
         tailwind.config = {
             theme: {
@@ -38,7 +40,9 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, var(--black) 0%, #2d3748 100%);
+            background: linear-gradient(rgba(52, 52, 59, 0.8), rgba(52, 52, 59, 0.5)),
+                url('https://images.pexels.com/photos/33622135/pexels-photo-33622135.jpeg');
+            background-size: cover;
         }
         
         .stats-card {
@@ -261,12 +265,25 @@
             background-color: var(--silver);
             color: var(--black);
         }
+
+        /* Fix for swiper in RTL */
+        body[dir="rtl"] .swiper-wrapper {
+            transform: translate3d(0px, 0px, 0px) !important;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            height: 3px;
+            border-radius: 2px;
+        }
     </style>
 </head>
+
 <body class="bg-white">
+
     <!-- Header -->
     <header class="gradient-bg text-white">
-        <nav class="container mx-auto px-6 py-4">
+        <nav class="container mx-auto px-6 py-4" style="">
             <div class="flex justify-between items-center">
                 <div class="text-2xl font-bold">
                     <span class="text-white">Partner</span><span class="text-silver">Hub</span>
@@ -296,11 +313,11 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="mobile-menu mt-4 md:hidden">
                 <div class="flex flex-col space-y-4">
-                    <a href="#" class="text-white hover:text-silver py-2" data-translate="nav.home">Home</a>
-                    <a href="#" class="text-white hover:text-silver py-2" data-translate="nav.programs">About</a>
-                    <a href="#" class="text-white hover:text-silver py-2" data-translate="nav.benefits">Services</a>
-                    <a href="#" class="text-white hover:text-silver py-2" data-translate="nav.resources">Partners</a>
-                    <a href="#" class="text-white hover:text-silver py-2" data-translate="nav.contact">Contact</a>
+                    <a href="../Home/index.html" target="_blank" class="text-white hover:text-silver py-2" data-translate="nav.home">Home</a>
+                    <a href="../About/about.html" target="_blank" class="text-white hover:text-silver py-2" data-translate="nav.programs">About</a>
+                    <a href="../Services/services.html" target="_blank" class="text-white hover:text-silver py-2" data-translate="nav.benefits">Services</a>
+                    <a href="../Partner/Partner.html" target="_blank" class="text-white hover:text-silver py-2" data-translate="nav.resources">Partners</a>
+                    <a href="../Contact Us/contact.html" target="_blank" class="text-white hover:text-silver py-2" data-translate="nav.contact">Contact</a>
                 </div>
             </div>
         </nav>
@@ -327,75 +344,259 @@
     </header>
 
     <!-- Stats Section -->
-    <section class="py-16 bg-white" id="LearnMore">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="stats-card bg-silver p-6 rounded-xl text-center">
-                    <div class="text-4xl font-bold text-black mb-2">1,250+</div>
-                    <div class="text-black" data-translate="stats.partners">Active Partners</div>
+    <section id="LearnMore" class="py-12 lg:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-800" data-translate="stats.title">Our Success in Numbers</h2>
+            <p class="mt-3 text-lg text-gray-600" data-translate="stats.subtitle">We're proud of the community we've built and the results we've delivered.</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-4 rounded"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+            <div class="stat-card p-8 bg-white rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                <div class="text-5xl font-extrabold text-gray-800" data-target="1250">0</div>
+                <p class="mt-2 text-gray-500 font-medium" data-translate="stats.customers">Active Customers</p>
+            </div>
+
+            <div class="stat-card p-8 bg-white rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                <div class="text-5xl font-extrabold text-gray-800" data-target="45">0</div>
+                <p class="mt-2 text-gray-500 font-medium" data-translate="stats.revenue">Million Annual Revenue</p>
+            </div>
+
+            <div class="stat-card p-8 bg-white rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                <div class="text-5xl font-extrabold text-gray-800" data-target="95">0%</div>
+                <p class="mt-2 text-gray-500 font-medium" data-translate="stats.satisfaction">Partner Satisfaction</p>
+            </div>
+
+            <div class="stat-card p-8 bg-white rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                <div class="text-5xl font-extrabold text-gray-800" data-target="15">0+</div>
+                <p class="mt-2 text-gray-500 font-medium" data-translate="stats.countries">Countries Served</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!--Partners Section-->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="partners.title">Our Partners</h2>
+            <p class="text-xl text-gray-600" data-translate="partners.subtitle">
+            Our partners are a diverse group of industry leaders who share our commitment to innovation and excellence
+            </p>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-4 rounded"></div>
+        </div>
+
+        <div class="swiper my-services-slider">
+            <div class="swiper-wrapper">
+                <!-- Slide: Abert -->
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Abert.png" alt="Abert" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Abert
+                    </button>
                 </div>
-                <div class="stats-card bg-silver p-6 rounded-xl text-center">
-                    <div class="text-4xl font-bold text-black mb-2">$45M+</div>
-                    <div class="text-black" data-translate="stats.revenue">Annual Revenue</div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/AMT.jpg" alt="AMT" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    AMT
+                    </button>
                 </div>
-                <div class="stats-card bg-silver p-6 rounded-xl text-center">
-                    <div class="text-4xl font-bold text-black mb-2">95%</div>
-                    <div class="text-black" data-translate="stats.satisfaction">Partner Satisfaction</div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Christofle.png" alt="Christofle" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Christofle
+                    </button>
                 </div>
-                <div class="stats-card bg-silver p-6 rounded-xl text-center">
-                    <div class="text-4xl font-bold text-black mb-2">15+</div>
-                    <div class="text-black" data-translate="stats.countries">Countries</div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Cres cor.png" alt="Cres cor" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Cres cor
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Crown Food Equipment.png" alt="Crown Food Equipment" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Crown Food Equipment
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Duxiana.png" alt="Duxiana" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Duxiana
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Follett.png" alt="Follett" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Follett
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Hepp.png" alt="Hepp" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Hepp
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/IVV.png" alt="IVV" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    IVV
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Kitchen equipment.png" alt="Kitchen equipment" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Kitchen Equipment
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Mepra.png" alt="Mepra" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Mepra
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Nilma.png" alt="Nilma" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Nilma
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Ripples.png" alt="Ripples" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Ripples
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Screen Flex.png" alt="Screen Flex" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Screen Flex
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Sinmag europe.png" alt="Sinmag europe" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Sinmag Europe
+                    </button>
+                </div>
+
+                <div class="swiper-slide group flex flex-col items-center p-4">
+                    <div class="w-48 h-48 overflow-hidden mb-4 rounded-lg">
+                    <img src="Partner Img/Synesso.png" alt="Synesso" class="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110">
+                    </div>
+                    <button class="px-6 py-2 text-gray-800 font-semibold border border-gray-300 rounded">
+                    Synesso
+                    </button>
                 </div>
             </div>
+
+            <!-- pagination & arrows -->
+            <div class="swiper-pagination mt-6"></div>
+            <div class="swiper-button-prev text-gray-600"></div>
+            <div class="swiper-button-next text-gray-600"></div>
+        </div>
         </div>
     </section>
 
-    <!-- Partnership Benefits -->
-    <section class="py-20 bg-silver">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-black mb-4" data-translate="benefits.title">Why Partner With Us?</h2>
-                <p class="text-xl text-black max-w-3xl mx-auto" data-translate="benefits.subtitle">
-                    We provide comprehensive support and resources to ensure your success as our partner.
+    <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-translate="benefits.title">
+                Why Partner With Us?
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-translate="benefits.subtitle">
+                Unlock your potential with a partnership designed for growth, innovation, and global reach.
+            </p>
+            <div class="mt-6 w-24 h-1.5 bg-gradient-to-r from-blue-500 to-teal-400 rounded-full mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="group bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+                <div class="mb-6 inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-green-400 to-blue-500 text-white shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-3.75-.625m3.75.625V3.375" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-translate="benefits.1.title">Revenue Growth</h3>
+                <p class="text-gray-600 leading-relaxed" data-translate="benefits.1.desc">
+                    Access exclusive revenue sharing programs with competitive commission structures and performance bonuses.
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-line text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-black mb-4" data-translate="benefits.1.title">Revenue Growth</h3>
-                    <p class="text-black" data-translate="benefits.1.desc">
-                        Access exclusive revenue sharing programs with competitive commission structures and bonuses.
-                    </p>
+            <div class="group bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+                <div class="mb-6 inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-500 text-white shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 5.25l-2.472 2.472a3.375 3.375 0 004.773 4.773z" />
+                    </svg>
                 </div>
-                
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-tools text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-black mb-4" data-translate="benefits.2.title">Advanced Tools</h3>
-                    <p class="text-black" data-translate="benefits.2.desc">
-                        Get access to cutting-edge marketing tools, analytics, and dedicated technical support.
-                    </p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-translate="benefits.2.title">Advanced Tools</h3>
+                <p class="text-gray-600 leading-relaxed" data-translate="benefits.2.desc">
+                    Get access to our cutting-edge marketing dashboard, real-time analytics, and dedicated technical support.
+                </p>
+            </div>
+            
+            <div class="group bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+                <div class="mb-6 inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-500 text-white shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0112 16.5c-2.998 0-5.74-1.1-7.843-2.918" />
+                    </svg>
                 </div>
-                
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-users text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-black mb-4" data-translate="benefits.3.title">Global Network</h3>
-                    <p class="text-black" data-translate="benefits.3.desc">
-                        Connect with a worldwide community of partners and leverage collective expertise.
-                    </p>
-                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-translate="benefits.3.title">Global Network</h3>
+                <p class="text-gray-600 leading-relaxed" data-translate="benefits.3.desc">
+                    Connect with a worldwide community of industry leaders and leverage our collective expertise for greater success.
+                </p>
             </div>
         </div>
-    </section>
-
-
-
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
@@ -424,10 +625,10 @@
                 <div class="footer-links">
                     <h4 class="footer-heading" data-translate="footer.services.title">Our Services</h4>
                     <ul>
-                        <li><a href="#" data-translate="footer.services.hospitality">Hospitality</a></li>
-                        <li><a href="#" data-translate="footer.services.logistics">Logistics</a></li>
-                        <li><a href="#" data-translate="footer.services.mobility">Mobility</a></li>
-                        <li><a href="#" data-translate="footer.services.commercial">Auto Services</a></li>
+                        <li><a href="#" data-translate="footer.services.hospitality">MESMAT Hospitality</a></li>
+                        <li><a href="#" data-translate="footer.services.logistics">MESMAT Logistics</a></li>
+                        <li><a href="#" data-translate="footer.services.mobility">MESMAT Mobility</a></li>
+                        <li><a href="#" data-translate="footer.services.commercial">MESMAT Auto Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -443,10 +644,12 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script>
         // Language toggle functionality
         const languageToggle = document.getElementById('language-toggle');
         let currentLanguage = 'en';
+        let mySwiper = null;
         
         const translations = {
             'en': {
@@ -460,28 +663,22 @@
                 'hero.subtitle': 'Join our global network of industry leaders and unlock new growth opportunities with our comprehensive partnership program.',
                 'button.becomePartner': 'Become a Partner',
                 'button.learnMore': 'Learn More',
-                'stats.partners': 'Active Partners',
+                'stats.title': 'Our Success in Numbers',
+                'stats.subtitle': "We're proud of the community we've built and the results we've delivered.",
+                'stats.customers': 'Active Customers',
                 'stats.revenue': 'Annual Revenue',
                 'stats.satisfaction': 'Partner Satisfaction',
-                'stats.countries': 'Countries',
+                'stats.countries': 'Countries Served',
+                'partners.title': 'Our Partners',
+                'partners.subtitle': 'Our partners are a diverse group of industry leaders who share our commitment to innovation and excellence',
                 'benefits.title': 'Why Partner With Us?',
-                'benefits.subtitle': 'We provide comprehensive support and resources to ensure your success as our partner.',
+                'benefits.subtitle': 'Unlock your potential with a partnership designed for growth, innovation, and global reach.',
                 'benefits.1.title': 'Revenue Growth',
-                'benefits.1.desc': 'Access exclusive revenue sharing programs with competitive commission structures and bonuses.',
+                'benefits.1.desc': 'Access exclusive revenue sharing programs with competitive commission structures and performance bonuses.',
                 'benefits.2.title': 'Advanced Tools',
-                'benefits.2.desc': 'Get access to cutting-edge marketing tools, analytics, and dedicated technical support.',
+                'benefits.2.desc': 'Get access to our cutting-edge marketing dashboard, real-time analytics, and dedicated technical support.',
                 'benefits.3.title': 'Global Network',
-                'benefits.3.desc': 'Connect with a worldwide community of partners and leverage collective expertise.',
-                'stories.title': 'Success Stories',
-                'stories.subtitle': 'Hear from our partners about their journey and achievements with our program.',
-                'stories.1.role': 'CEO, TechGrowth Solutions',
-                'stories.1.quote': '"The partnership program has been transformative for our business. We\'ve seen a 45% increase in revenue within the first year, and the support from the team has been exceptional."',
-                'stories.2.role': 'Director, InnovateX',
-                'stories.2.quote': '"The resources and tools provided have enabled us to scale our operations efficiently. The partnership has opened doors to markets we never thought possible."',
-                'cta.title': 'Ready to Start Your Partnership Journey?',
-                'cta.subtitle': 'Join thousands of successful partners who are growing their business with our comprehensive program.',
-                'button.applyNow': 'Apply Now',
-                'button.scheduleDemo': 'Schedule a Demo',
+                'benefits.3.desc': 'Connect with a worldwide community of industry leaders and leverage our collective expertise for greater success.',
                 'footer.about': 'Your trusted partner for innovative solutions in hospitality and commercial sectors.',
                 'footer.links.title': 'Quick Links',
                 'footer.links.home': 'Home',
@@ -493,46 +690,40 @@
                 'footer.services.hospitality': 'Hospitality',
                 'footer.services.logistics': 'Logistics',
                 'footer.services.mobility': 'Mobility',
-                'footer.services.commercial': 'Commercial',
+                'footer.services.commercial': 'Auto Services',
                 'footer.contact.title': 'Contact Us',
-                'footer.contact.address': '123 Business Bay, Riyadh, KSA',
-                'footer.contact.phone': '+966 11 123 4567',
+                'footer.contact.address': 'Riyadh, KSA',
+                'footer.contact.phone': '+966 11 4709911',
                 'footer.contact.email': 'info@mesmat.com',
-                'footer.copyright': '© 2024 MESMAT. All Rights Reserved.'
+                'footer.copyright': '© 2025 MESMAT. All Rights Reserved.'
             },
             'ar': {
                 'nav.home': 'الرئيسية',
-                'nav.programs': 'البرامج',
-                'nav.benefits': 'المزايا',
-                'nav.resources': 'المصادر',
+                'nav.programs': 'من نحن',
+                'nav.benefits': 'الخدمات',
+                'nav.resources': 'الشركاء',
                 'nav.contact': 'اتصل بنا',
                 'button.partners': 'الشركاء',
                 'hero.title': 'ارفع مستوى عملك من خلال <span class="text-silver">شراكات</span> استراتيجية',
                 'hero.subtitle': 'انضم إلى شبكتنا العالمية من قادة الصناعة وافتح فرص نمو جديدة مع برنامج الشراكة الشامل لدينا.',
                 'button.becomePartner': 'كن شريكًا',
                 'button.learnMore': 'اعرف أكثر',
-                'stats.partners': 'الشركاء النشطون',
+                'stats.title': 'نجاحنا في الأرقام',
+                'stats.subtitle': 'نحن فخورون بالمجتمع الذي بنيناه والنتائج التي حققناها.',
+                'stats.customers': 'عملاء نشطون',
                 'stats.revenue': 'الإيرادات السنوية',
                 'stats.satisfaction': 'رضا الشركاء',
-                'stats.countries': 'الدول',
+                'stats.countries': 'الدول المخدومة',
+                'partners.title': 'شركاؤنا',
+                'partners.subtitle': 'شركاؤنا هم مجموعة متنوعة من قادة الصناعة الذين يشاركوننا التزامنا بالابتكار والتميز',
                 'benefits.title': 'لماذا تشراك معنا؟',
-                'benefits.subtitle': 'نوفر الدعم الشامل والموارد لضمان نجاحك كشريك لدينا.',
+                'benefits.subtitle': 'افتح إمكانياتك من خلال شراكة مصممة للنمو والابتكار والوصول العالمي.',
                 'benefits.1.title': 'نمو الإيرادات',
-                'benefits.1.desc': 'الوصول إلى برامج مشاركة الإيرادات الحصرية مع هياكل عمولات تنافسية ومكافآت.',
+                'benefits.1.desc': 'الوصول إلى برامج مشاركة الإيرادات الحصرية مع هياكل عمولات تنافسية ومكافآت الأداء.',
                 'benefits.2.title': 'أدوات متقدمة',
-                'benefits.2.desc': 'احصل على أحدث أدوات التسويق والتحليلات والدعم الفني المخصص.',
+                'benefits.2.desc': 'احصل على لوحة التسويق المتطورة الخاصة بنا، والتحليلات في الوقت الفعلي، والدعم الفني المخصص.',
                 'benefits.3.title': 'شبكة عالمية',
-                'benefits.3.desc': 'تواصل مع مجتمع عالمي من الشركاء واستفد من الخبرة الجماعية.',
-                'stories.title': 'قصص النجاح',
-                'stories.subtitle': 'استمع من شركائنا عن رحلتهم وإنجازاتهم مع برنامجنا.',
-                'stories.1.role': 'الرئيس التنفيذي، TechGrowth Solutions',
-                'stories.1.quote': '"كان برنامج الشراكة تحويليًا لأعمالنا. لقد شهدنا زيادة بنسبة 45٪ في الإيرادات خلال السنة الأولى، وكان الدعم من الفريق استثنائيًا."',
-                'stories.2.role': 'المدير، InnovateX',
-                'stories.2.quote': '"مكنتنا الموارد والأدوات المقدمة من توسيع نطاق عملياتنا بكفاءة. فتحت الشراكة أبوابًا لأسواق لم نعتقد أنها ممكنة."',
-                'cta.title': 'مستعد لبدء رحلة الشراكة الخاصة بك؟',
-                'cta.subtitle': 'انضم إلى الآلاف من الشركاء الناجحين الذين ينمون أعمالهم مع برنامجنا الشامل.',
-                'button.applyNow': 'قدم الآن',
-                'button.scheduleDemo': 'جدولة عرض',
+                'benefits.3.desc': 'تواصل مع مجتمع عالمي من قادة الصناعة واستفد من خبرتنا الجماعية لتحقيق نجاح أكبر.',
                 'footer.about': 'شريكك الموثوق للحلول المبتكرة في قطاعات الضيافة والتجارة.',
                 'footer.links.title': 'روابط سريعة',
                 'footer.links.home': 'الرئيسية',
@@ -544,14 +735,42 @@
                 'footer.services.hospitality': 'الضيافة',
                 'footer.services.logistics': 'اللوجستيات',
                 'footer.services.mobility': 'المواصلات',
-                'footer.services.commercial': 'التجارية',
+                'footer.services.commercial': 'الخدمات الذاتية',
                 'footer.contact.title': 'اتصل بنا',
                 'footer.contact.address': 'الرياض، المملكة العربية السعودية',
-                'footer.contact.phone': '+966 11 123 4567',
+                'footer.contact.phone': '+966 11 4709911',
                 'footer.contact.email': 'info@mesmat.com',
-                'footer.copyright': '© 2024 مسمت. جميع الحقوق محفوظة.'
+                'footer.copyright': '© 2025 مسمت. جميع الحقوق محفوظة.'
             }
         };
+
+        // Initialize Swiper
+        function initSwiper() {
+            if (mySwiper) {
+                mySwiper.destroy(true, true);
+            }
+            
+            const isRTL = currentLanguage === 'ar';
+            
+            mySwiper = new Swiper(".my-services-slider", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                rtl: isRTL,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                },
+            });
+        }
 
         languageToggle.addEventListener('click', () => {
             currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
@@ -572,6 +791,12 @@
                     }
                 }
             });
+            
+            // Reinitialize Swiper with new direction
+            initSwiper();
+            
+            // Reset counters
+            resetCounters();
         });
 
         // Simple animations and interactions
@@ -582,6 +807,14 @@
             
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when a link is clicked
+            const mobileLinks = document.querySelectorAll('#mobile-menu a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
             });
             
             // Smooth scrolling for anchor links
@@ -597,17 +830,65 @@
                 });
             });
             
-            // Partner card hover effects
-            const partnerCards = document.querySelectorAll('.partner-card');
-            partnerCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.classList.add('shadow-lg');
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.classList.remove('shadow-lg');
-                });
-            });
+            // Initialize Swiper
+            initSwiper();
+            
+            // Initialize counters
+            initCounters();
         });
+
+        // Counter animation functions
+        function initCounters() {
+            const counters = document.querySelectorAll('.stat-card [data-target]');
+            
+            counters.forEach(counter => {
+                counter.setAttribute('data-current', '0');
+            });
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target.querySelector('[data-target]');
+                        animateCounter(counter);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            document.querySelectorAll('.stat-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        function resetCounters() {
+            const counters = document.querySelectorAll('.stat-card [data-target]');
+            
+            counters.forEach(counter => {
+                counter.setAttribute('data-current', '0');
+                const symbol = counter.textContent.replace(/[0-9]/g, '');
+                counter.textContent = '0' + symbol;
+            });
+            
+            initCounters();
+        }
+
+        function animateCounter(counter) {
+            const target = +counter.getAttribute('data-target');
+            const text = counter.innerText;
+            const symbol = text.replace(/[0-9]/g, '');
+            const currentVal = +counter.getAttribute('data-current');
+            const increment = target / 200;
+
+            if (currentVal < target) {
+                counter.setAttribute('data-current', Math.ceil(currentVal + increment));
+                counter.innerText = Math.ceil(currentVal + increment) + symbol;
+                setTimeout(() => animateCounter(counter), 10);
+            } else {
+                counter.innerText = target + symbol;
+            }
+        }
     </script>
 </body>
 </html>
